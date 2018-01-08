@@ -25,4 +25,4 @@ namespace cry {
     }   
 }
 
-#undef CONST
+#undef st_const

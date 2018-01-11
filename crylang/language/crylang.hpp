@@ -1,6 +1,5 @@
-#include "code_types.hpp"
+#include "code.hpp"
 
-#define CONST static const auto
 
 namespace cry {
     namespace lang {
@@ -8,21 +7,22 @@ namespace cry {
         namespace operators {
 
             #define def_operation(x) \
-                static const auto x = object_view(types::operation, "@x")
+                static const auto x = object_view(types::operation, "@"#x)
 
-            CONST plus = object_view(types::operation, "@plus");
-            CONST minus = object_view(types::operation, "@minus");
-            CONST div = object_view(types::operation, "@div");
-            CONST mult = object_view(types::operation, "@mult");
+                def_operation(plus);
+                def_operation(minus);
+                def_operation(mult);
+                def_operation(div);
+                def_operation(mod);
 
-            CONST class_member = object_view(types::operation, "@class_member");
-            CONST ref = object_view(types::operation, "@ref");
+                def_operation(class_member);
+                def_operation(ref);
 
-            CONST assign_copy = object_view(types::operation, "@assign_copy");
+                def_operation(assign_copy);
+                def_operation(assign_move);
 
-            def_operation(assign_move);
+
+            #undef def_operation
         }
-    }   
+    }
 }
-
-#undef CONST

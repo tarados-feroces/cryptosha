@@ -16,7 +16,9 @@
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolBar>
 #include <QtWidgets/QWidget>
 
@@ -26,6 +28,8 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
+    QPushButton *runButton;
+    QTextEdit *textEdit;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -34,14 +38,21 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(720, 480);
+        MainWindow->resize(1017, 638);
         MainWindow->setIconSize(QSize(24, 24));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
+        runButton = new QPushButton(centralWidget);
+        runButton->setObjectName(QStringLiteral("runButton"));
+        runButton->setGeometry(QRect(550, 90, 89, 25));
+        textEdit = new QTextEdit(centralWidget);
+        textEdit->setObjectName(QStringLiteral("textEdit"));
+        textEdit->setGeometry(QRect(60, 69, 431, 471));
+        textEdit->viewport()->setProperty("cursor", QVariant(QCursor(Qt::IBeamCursor)));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 720, 22));
+        menuBar->setGeometry(QRect(0, 0, 1017, 22));
         MainWindow->setMenuBar(menuBar);
         mainToolBar = new QToolBar(MainWindow);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
@@ -58,6 +69,8 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Cryptosha", 0));
+        runButton->setText(QApplication::translate("MainWindow", "Run", 0));
+        textEdit->setPlaceholderText(QApplication::translate("MainWindow", "//code here//", 0));
     } // retranslateUi
 
 };

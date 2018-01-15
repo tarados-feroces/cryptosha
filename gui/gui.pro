@@ -6,7 +6,10 @@
 
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+#greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT += widgets
+
+CONFIG += c++11
 
 TARGET = gui
 TEMPLATE = app
@@ -25,10 +28,28 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main/main.cpp \
-        main/mainwindow.cpp
+        main/mainwindow.cpp \
+        elements/graph_pin.cpp \
+#        elements/graph_scene.cpp \
+    elements/graph_element.cpp \
+    elements/graph_layer.cpp \
+    main/scheme.cpp
+#    elements/graph_scene.cpp \
+
 
 HEADERS += \
-        main/mainwindow.h
+    main/mainwindow.h \
+    elements/graph_pin.h \
+    elements/graph_element.h \
+    elements/graph_layer.h \
+    main/scheme.h
+#    elements/graph_scene.h \
 
 FORMS += \
-        user_interface/mainwindow.ui
+        user_interface/mainwindow.ui \
+    user_interface/scheme.ui
+
+LIBS += -lqjson
+
+DISTFILES += \
+    main/test.json

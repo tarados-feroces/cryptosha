@@ -14,7 +14,7 @@ CC            = gcc
 CXX           = g++
 DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -m64 -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-CXXFLAGS      = -m64 -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
+CXXFLAGS      = -m64 -pipe -g -std=c++0x -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 INCPATH       = -I../gui -I. -isystem /usr/include/x86_64-linux-gnu/qt5 -isystem /usr/include/x86_64-linux-gnu/qt5/QtWidgets -isystem /usr/include/x86_64-linux-gnu/qt5/QtGui -isystem /usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I. -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64
 QMAKE         = /usr/lib/x86_64-linux-gnu/qt5/bin/qmake
 DEL_FILE      = rm -f
@@ -36,7 +36,7 @@ DISTNAME      = gui1.0.0
 DISTDIR = /home/danchetto/projects/cryptosha/build-gui-Desktop-Debug/.tmp/gui1.0.0
 LINK          = g++
 LFLAGS        = -m64
-LIBS          = $(SUBLIBS) -L/usr/X11R6/lib64 -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
+LIBS          = $(SUBLIBS) -L/usr/X11R6/lib64 -lqjson -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -49,11 +49,28 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = ../gui/main/main.cpp \
-		../gui/main/mainwindow.cpp moc_mainwindow.cpp
+		../gui/main/mainwindow.cpp \
+		../gui/elements/graph_pin.cpp \
+		../gui/elements/graph_element.cpp \
+		../gui/elements/graph_layer.cpp \
+		../gui/main/scheme.cpp \
+		../gui/main/codearea.cpp moc_mainwindow.cpp \
+		moc_graph_element.cpp \
+		moc_scheme.cpp \
+		moc_codearea.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
-		moc_mainwindow.o
-DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
+		graph_pin.o \
+		graph_element.o \
+		graph_layer.o \
+		scheme.o \
+		codearea.o \
+		moc_mainwindow.o \
+		moc_graph_element.o \
+		moc_scheme.o \
+		moc_codearea.o
+DIST          = ../gui/main/test.json \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/unix.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/linux.conf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/common/sanitize.conf \
@@ -98,6 +115,7 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/resolve_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_post.prf \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/c++11.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qml_debug.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/warn_on.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt.prf \
@@ -110,8 +128,18 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		../gui/gui.pro ../gui/main/mainwindow.h ../gui/main/main.cpp \
-		../gui/main/mainwindow.cpp
+		../gui/gui.pro ../gui/main/mainwindow.h \
+		../gui/elements/graph_pin.h \
+		../gui/elements/graph_element.h \
+		../gui/elements/graph_layer.h \
+		../gui/main/scheme.h \
+		../gui/main/codearea.h ../gui/main/main.cpp \
+		../gui/main/mainwindow.cpp \
+		../gui/elements/graph_pin.cpp \
+		../gui/elements/graph_element.cpp \
+		../gui/elements/graph_layer.cpp \
+		../gui/main/scheme.cpp \
+		../gui/main/codearea.cpp
 QMAKE_TARGET  = gui
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = gui
@@ -139,7 +167,7 @@ first: all
 
 ####### Build rules
 
-$(TARGET): ui_mainwindow.h $(OBJECTS)  
+$(TARGET): ui_mainwindow.h ui_scheme.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../gui/gui.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -187,6 +215,7 @@ Makefile: ../gui/gui.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64/qmak
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/resolve_config.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_post.prf \
+		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/c++11.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qml_debug.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/warn_on.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt.prf \
@@ -249,6 +278,7 @@ Makefile: ../gui/gui.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64/qmak
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_pre.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/resolve_config.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/default_post.prf:
+/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/c++11.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qml_debug.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/warn_on.prf:
 /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/qt.prf:
@@ -279,9 +309,9 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../gui/main/mainwindow.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../gui/main/main.cpp ../gui/main/mainwindow.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../gui/user_interface/mainwindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../gui/main/mainwindow.h ../gui/elements/graph_pin.h ../gui/elements/graph_element.h ../gui/elements/graph_layer.h ../gui/main/scheme.h ../gui/main/codearea.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../gui/main/main.cpp ../gui/main/mainwindow.cpp ../gui/elements/graph_pin.cpp ../gui/elements/graph_element.cpp ../gui/elements/graph_layer.cpp ../gui/main/scheme.cpp ../gui/main/codearea.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../gui/user_interface/mainwindow.ui ../gui/user_interface/scheme.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -304,19 +334,36 @@ check: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_mainwindow.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_graph_element.cpp moc_scheme.cpp moc_codearea.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp
-moc_mainwindow.cpp: ../gui/main/mainwindow.h
+	-$(DEL_FILE) moc_mainwindow.cpp moc_graph_element.cpp moc_scheme.cpp moc_codearea.cpp
+moc_mainwindow.cpp: ../gui/elements/graph_layer.h \
+		../gui/elements/graph_element.h \
+		../gui/elements/graph_pin.h \
+		../gui/main/codearea.h \
+		../gui/main/mainwindow.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/danchetto/projects/cryptosha/gui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../gui/main/mainwindow.h -o moc_mainwindow.cpp
+
+moc_graph_element.cpp: ../gui/elements/graph_pin.h \
+		../gui/elements/graph_element.h
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/danchetto/projects/cryptosha/gui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../gui/elements/graph_element.h -o moc_graph_element.cpp
+
+moc_scheme.cpp: ../gui/main/scheme.h
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/danchetto/projects/cryptosha/gui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../gui/main/scheme.h -o moc_scheme.cpp
+
+moc_codearea.cpp: ../gui/main/codearea.h
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/danchetto/projects/cryptosha/gui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../gui/main/codearea.h -o moc_codearea.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h
+compiler_uic_make_all: ui_mainwindow.h ui_scheme.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h
+	-$(DEL_FILE) ui_mainwindow.h ui_scheme.h
 ui_mainwindow.h: ../gui/user_interface/mainwindow.ui
 	/usr/lib/x86_64-linux-gnu/qt5/bin/uic ../gui/user_interface/mainwindow.ui -o ui_mainwindow.h
+
+ui_scheme.h: ../gui/user_interface/scheme.ui
+	/usr/lib/x86_64-linux-gnu/qt5/bin/uic ../gui/user_interface/scheme.ui -o ui_scheme.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -328,15 +375,55 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 
 ####### Compile
 
-main.o: ../gui/main/main.cpp ../gui/main/mainwindow.h
+main.o: ../gui/main/main.cpp ../gui/main/mainwindow.h \
+		../gui/elements/graph_layer.h \
+		../gui/elements/graph_element.h \
+		../gui/elements/graph_pin.h \
+		../gui/main/codearea.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../gui/main/main.cpp
 
 mainwindow.o: ../gui/main/mainwindow.cpp ../gui/main/mainwindow.h \
-		ui_mainwindow.h
+		../gui/elements/graph_layer.h \
+		../gui/elements/graph_element.h \
+		../gui/elements/graph_pin.h \
+		../gui/main/codearea.h \
+		ui_mainwindow.h \
+		../gui/main/scheme.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../gui/main/mainwindow.cpp
+
+graph_pin.o: ../gui/elements/graph_pin.cpp ../gui/elements/graph_pin.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o graph_pin.o ../gui/elements/graph_pin.cpp
+
+graph_element.o: ../gui/elements/graph_element.cpp ../gui/elements/graph_element.h \
+		../gui/elements/graph_pin.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o graph_element.o ../gui/elements/graph_element.cpp
+
+graph_layer.o: ../gui/elements/graph_layer.cpp ../gui/elements/graph_layer.h \
+		../gui/elements/graph_element.h \
+		../gui/elements/graph_pin.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o graph_layer.o ../gui/elements/graph_layer.cpp
+
+scheme.o: ../gui/main/scheme.cpp ../gui/main/scheme.h \
+		ui_scheme.h \
+		../gui/elements/graph_layer.h \
+		../gui/elements/graph_element.h \
+		../gui/elements/graph_pin.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o scheme.o ../gui/main/scheme.cpp
+
+codearea.o: ../gui/main/codearea.cpp ../gui/main/codearea.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o codearea.o ../gui/main/codearea.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
+
+moc_graph_element.o: moc_graph_element.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_graph_element.o moc_graph_element.cpp
+
+moc_scheme.o: moc_scheme.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_scheme.o moc_scheme.cpp
+
+moc_codearea.o: moc_codearea.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_codearea.o moc_codearea.cpp
 
 ####### Install
 

@@ -319,7 +319,7 @@ namespace cryptosha
 			list = str_to_list(str, syntax::keywords::c_open, syntax::keywords::c_close);
 			str.clear();
 
-			for (auto &it : list)
+			for (auto& it : list)
 			{
 				if (it == syntax::keywords::c_open_m)
 				{

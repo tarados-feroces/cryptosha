@@ -15,13 +15,13 @@ public:
 
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
-    void SetCoords(int, int);
+    void setCoords(int, int);
 
-    void SetNumber(int);
+    void setNumber(int);
 
-    QPointF GetPoint()
+    QPointF getPoint()
     {
-        return QPointF(g_x, g_y);
+        return QPointF(gX, gY);
     }
 
     QRectF boundingRect() const;
@@ -29,8 +29,8 @@ public:
 	void mousePressEvent(QGraphicsSceneMouseEvent *event);
 
     bool value;
-    int g_x;
-    int g_y;
+    int gX;
+    int gY;
     int number;
 };
 

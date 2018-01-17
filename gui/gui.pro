@@ -29,27 +29,34 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main/main.cpp \
         main/mainwindow.cpp \
-        elements/graph_pin.cpp \
 #        elements/graph_scene.cpp \
-    elements/graph_element.cpp \
-    elements/graph_layer.cpp \
-    main/scheme.cpp
+    main/scheme.cpp \
+    elements/style.cpp \
+    elements/graphElement.cpp \
+    elements/graphLayer.cpp \
+    elements/graphPin.cpp \
+    main/styleSelect.cpp
 #    elements/graph_scene.cpp \
 
 
 HEADERS += \
     main/mainwindow.h \
-    elements/graph_pin.h \
-    elements/graph_element.h \
-    elements/graph_layer.h \
-    main/scheme.h
+    main/scheme.h \
+    elements/style.h \
+    main/styleselect.h \
+    elements/graphElement.h \
+    elements/graphLayer.h \
+    elements/graphPin.h
 #    elements/graph_scene.h \
 
 FORMS += \
         user_interface/mainwindow.ui \
-    user_interface/scheme.ui
+    user_interface/scheme.ui \
+    user_interface/styleselect.ui
 
 LIBS += -lqjson
 
 DISTFILES += \
-    main/test.json
+    main/test.json \
+    styles/DefaultStyle.json \
+    styles/myStyle.json

@@ -3,7 +3,7 @@
 
 #include <QGraphicsItem>
 #include <QWidget>
-#include "graph_element.h"
+#include "graphElement.h"
 #include <QList>
 #include <QPainter>
 
@@ -12,7 +12,7 @@ class GraphLayer : public QGraphicsItem
 public:
 
     GraphLayer(QGraphicsItem * parent = 0);
-    GraphLayer(int x, int y, QGraphicsItem * parent = 0);
+    GraphLayer(int x, int y, Style &_style, QGraphicsItem *parent = 0);
 
 	void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
@@ -20,8 +20,9 @@ public:
 
 	QVector<GraphElement*> listElements;
 
-	int g_x;
-	int g_y;
+    int gX;
+    int gY;
+    Style style;
 
 };
 

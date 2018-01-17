@@ -4,12 +4,13 @@
 #include <QMainWindow>
 #include <QGraphicsScene>
 #include <QPainter>
-#include "elements/graph_layer.h"
 #include <QMenuBar>
 #include <QFile>
 #include <QFileDialog>
 #include <QDir>
 #include <QAction>
+#include "styleselect.h"
+#include "elements/style.h"
 
 
 
@@ -28,20 +29,26 @@ public:
     ~MainWindow();
 
     void draw();
-    void create_file_menu();
+    void createFileMenu();
+    void createSettingsMenu();
 
 public slots:
     void on_runButton_clicked();
-    void show_save_menu();
-    void show_open_menu();
-    void show_new_menu();
+    void showSaveMenu();
+    void showOpenMenu();
+    void showNewMenu();
+    void showStyleMenu();
     void changed();
+    void styleUpdate();
 
 private:
     Ui::MainWindow *ui;
-    QMenu *file_menu;
+    QMenu *fileMenu;
+    QMenu *settingsMenu;
     QString filename;
-    bool file_saved;
+    bool fileSaved;
+    Style style;
+    styleSelect *sSelect;
 };
 
 #endif // MAINWINDOW_H

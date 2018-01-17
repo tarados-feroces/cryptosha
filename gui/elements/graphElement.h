@@ -10,7 +10,8 @@
 #include <QObject>
 #include <memory>
 
-#include "graph_pin.h"
+#include "graphPin.h"
+#include "style.h"
 
 
 
@@ -20,34 +21,29 @@ class GraphElement : public QObject, public QGraphicsItem
 
 public:
     GraphElement(QGraphicsItem * parent = 0);
-    GraphElement(int input, int output, QGraphicsItem * parent = 0);
+    GraphElement(int input, int output, Style& _style, QGraphicsItem * parent = 0);
     GraphElement(const GraphElement &) = default;
 
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
-    //QPainterPath shape() const;
-
-    void SetPinsCoords();
+    void setPinsCoords();
 
 
     //void mousePressEvent(QGraphicsSceneMouseEvent *event);
 
     QRectF boundingRect() const;
 
-    // Inherited from QGraphicsLayoutItem
-    /*void setGeometry(const QRectF &geom) Q_DECL_OVERRIDE;
-    QSizeF sizeHint(Qt::SizeHint which, const QSizeF &constraint = QSizeF()) const Q_DECL_OVERRIDE;*/
-
     int id;
 
     using gpin_ptr = std::shared_ptr<GraphPin>;
     QVector<gpin_ptr> vInPins;
     QVector<gpin_ptr> vOutPins;
-    int g_x;
-    int g_y;
+    Style style;
+    int gX;
+    int gY;
     int InputPins;
     int OutputPins;
-    //Graph_Element & operator=(const Graph_Element & obj);
+
 
     int get_width() const
     {

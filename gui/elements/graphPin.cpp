@@ -1,4 +1,4 @@
-#include "graph_pin.h"
+#include "graphPin.h"
 #include <QDebug>
 
 GraphPin::GraphPin(QGraphicsItem *parent) : QGraphicsItem(parent)
@@ -27,7 +27,7 @@ void GraphPin::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, 
     else
     {
         painter->setBrush(Qt::white);
-        painter->drawRect(0, -2, 4, 4);
+        painter->drawEllipse(0, -2, 4, 4);
     }
 }
 

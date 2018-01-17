@@ -5,22 +5,26 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow), file_saved(true)
+    ui(new Ui::MainWindow), fileSaved(true)
 {
     ui->setupUi(this);
-    create_file_menu();
+    createFileMenu();
+    createSettingsMenu();
     ui->menuBar->show();
-
+    Style newStyle;
+    style = newStyle;
+    sSelect = new styleSelect(this);
     QObject::connect(ui->textEdit, SIGNAL(textChanged()), this,  SLOT(changed()));
+    QObject::connect(sSelect, SIGNAL(Update()), this,  SLOT(styleUpdate()));
 }
 
 
 
 void MainWindow::changed()
 {
-    if (this->file_saved)
+    if (this->fileSaved)
     {
-        this->file_saved = false;
+        this->fileSaved = false;
         this->setWindowTitle("Cryptosha   " + this->filename + "*");
     }
 
@@ -28,27 +32,40 @@ void MainWindow::changed()
 
 
 
-void MainWindow::create_file_menu()
+void MainWindow::createFileMenu()
 {
-    file_menu = menuBar()->addMenu(tr("&File"));
+    fileMenu = menuBar()->addMenu(tr("&File"));
 
     auto new_action = new QAction(tr("&New"), this);
-    QObject::connect(new_action, SIGNAL(triggered(bool)), this,  SLOT(show_new_menu()));
+    QObject::connect(new_action, SIGNAL(triggered(bool)), this,  SLOT(showNewMenu()));
 
     auto open_action = new QAction(tr("&Open"), this);
-    QObject::connect(open_action, SIGNAL(triggered(bool)), this,  SLOT(show_open_menu()));
+    QObject::connect(open_action, SIGNAL(triggered(bool)), this,  SLOT(showOpenMenu()));
 
     auto save_action = new QAction(tr("&Save"), this);
-    QObject::connect(save_action, SIGNAL(triggered(bool)), this,  SLOT(show_save_menu()));
+    QObject::connect(save_action, SIGNAL(triggered(bool)), this,  SLOT(showSaveMenu()));
 
-    file_menu->addAction(new_action);
-    file_menu->addAction(open_action);
-    file_menu->addAction(save_action);
+    fileMenu->addAction(new_action);
+    fileMenu->addAction(open_action);
+    fileMenu->addAction(save_action);
 }
 
 
 
-void MainWindow::show_save_menu()
+void MainWindow::createSettingsMenu()
+{
+    settingsMenu = menuBar()->addMenu(tr("&Settings"));
+
+    auto style_action = new QAction(tr("&Style"), this);
+    QObject::connect(style_action, SIGNAL(triggered(bool)), this,  SLOT(showStyleMenu()));
+
+
+    settingsMenu->addAction(style_action);
+}
+
+
+
+void MainWindow::showSaveMenu()
 {
 
     if (this->filename.size() == 0)
@@ -64,20 +81,23 @@ void MainWindow::show_save_menu()
         QString filename = this->filename;
     }
 
-    QFile file(filename);
-    file.open(QIODevice::WriteOnly);
-    file.write(ui->textEdit->toPlainText().toUtf8());
-    file.close();
-    this->file_saved = true;
-    this->setWindowTitle("Cryptosha   " + this->filename);
+    if (this->filename.size() != 0)
+    {
+        QFile file(filename);
+        file.open(QIODevice::WriteOnly);
+        file.write(ui->textEdit->toPlainText().toUtf8());
+        file.close();
+        this->fileSaved = true;
+        this->setWindowTitle("Cryptosha   " + this->filename);
+    }
 }
 
 
 
-void MainWindow::show_open_menu()
+void MainWindow::showOpenMenu()
 {
-    if (!this->file_saved)
-        this->show_save_menu();
+    if (!this->fileSaved)
+        this->showSaveMenu();
 
     QString filename = QFileDialog::getOpenFileName(this, tr("Open Document"), QDir::currentPath(), tr("Cryptosha (*.cry)") );
     QFile file(filename);
@@ -87,31 +107,46 @@ void MainWindow::show_open_menu()
 
     ui->textEdit->setText(data);
     this->filename = filename;
-    this->file_saved = true;
+    this->fileSaved = true;
     this->setWindowTitle("Cryptosha   " + this->filename);
 }
 
 
 
-void MainWindow::show_new_menu()
+void MainWindow::showNewMenu()
 {
-    if (!this->file_saved)
-        this->show_save_menu();
+    if (!this->fileSaved)
+        this->showSaveMenu();
 
     QString filename = QDir::currentPath() + "/untitled.cry";
     this->filename = filename;
 
     ui->textEdit->setText(QString());
-    this->file_saved = true;
+    this->fileSaved = true;
     this->setWindowTitle("Cryptosha   " + this->filename);
+}
+
+
+
+void MainWindow::showStyleMenu()
+{
+    sSelect->show();
+}
+
+
+void MainWindow::styleUpdate()
+{
+    style = sSelect->style;
 }
 
 
 
 void MainWindow::on_runButton_clicked()
 {
-    Scheme *dialog = new Scheme(this);
+    showSaveMenu();
+    Scheme *dialog = new Scheme(style, this);
     dialog->show();
+    dialog->setWindowTitle(this->filename);
 }
 
 

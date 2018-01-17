@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[7];
-    char stringdata0[85];
+    QByteArrayData data[9];
+    char stringdata0[105];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,15 +32,17 @@ static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
 QT_MOC_LITERAL(0, 0, 10), // "MainWindow"
 QT_MOC_LITERAL(1, 11, 20), // "on_runButton_clicked"
 QT_MOC_LITERAL(2, 32, 0), // ""
-QT_MOC_LITERAL(3, 33, 14), // "show_save_menu"
-QT_MOC_LITERAL(4, 48, 14), // "show_open_menu"
-QT_MOC_LITERAL(5, 63, 13), // "show_new_menu"
-QT_MOC_LITERAL(6, 77, 7) // "changed"
+QT_MOC_LITERAL(3, 33, 12), // "showSaveMenu"
+QT_MOC_LITERAL(4, 46, 12), // "showOpenMenu"
+QT_MOC_LITERAL(5, 59, 11), // "showNewMenu"
+QT_MOC_LITERAL(6, 71, 13), // "showStyleMenu"
+QT_MOC_LITERAL(7, 85, 7), // "changed"
+QT_MOC_LITERAL(8, 93, 11) // "styleUpdate"
 
     },
     "MainWindow\0on_runButton_clicked\0\0"
-    "show_save_menu\0show_open_menu\0"
-    "show_new_menu\0changed"
+    "showSaveMenu\0showOpenMenu\0showNewMenu\0"
+    "showStyleMenu\0changed\0styleUpdate"
 };
 #undef QT_MOC_LITERAL
 
@@ -50,7 +52,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       5,   14, // methods
+       7,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -58,13 +60,17 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   39,    2, 0x0a /* Public */,
-       3,    0,   40,    2, 0x0a /* Public */,
-       4,    0,   41,    2, 0x0a /* Public */,
-       5,    0,   42,    2, 0x0a /* Public */,
-       6,    0,   43,    2, 0x0a /* Public */,
+       1,    0,   49,    2, 0x0a /* Public */,
+       3,    0,   50,    2, 0x0a /* Public */,
+       4,    0,   51,    2, 0x0a /* Public */,
+       5,    0,   52,    2, 0x0a /* Public */,
+       6,    0,   53,    2, 0x0a /* Public */,
+       7,    0,   54,    2, 0x0a /* Public */,
+       8,    0,   55,    2, 0x0a /* Public */,
 
  // slots: parameters
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -81,10 +87,12 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->on_runButton_clicked(); break;
-        case 1: _t->show_save_menu(); break;
-        case 2: _t->show_open_menu(); break;
-        case 3: _t->show_new_menu(); break;
-        case 4: _t->changed(); break;
+        case 1: _t->showSaveMenu(); break;
+        case 2: _t->showOpenMenu(); break;
+        case 3: _t->showNewMenu(); break;
+        case 4: _t->showStyleMenu(); break;
+        case 5: _t->changed(); break;
+        case 6: _t->styleUpdate(); break;
         default: ;
         }
     }
@@ -116,13 +124,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 5)
+        if (_id < 7)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 5;
+        _id -= 7;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 5)
+        if (_id < 7)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 5;
+        _id -= 7;
     }
     return _id;
 }

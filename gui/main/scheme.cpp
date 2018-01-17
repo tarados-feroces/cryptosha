@@ -1,18 +1,27 @@
 #include "scheme.h"
 #include "ui_scheme.h"
-#include "elements/graph_layer.h"
+#include "elements/graphLayer.h"
 #include <QGraphicsScene>
 
-Scheme::Scheme(QWidget *parent) : QDialog(parent), ui(new Ui::Scheme)
+Scheme::Scheme(Style &_style, QWidget *parent) : QDialog(parent), ui(new Ui::Scheme), style(_style)
 {
     ui->setupUi(this);
     auto scene = new QGraphicsScene();
-    auto lay = new GraphLayer(-300, -100);
+//    auto style = new Style();
+    auto graphLay = new GraphLayer(-100, -100, style);
+
 
     ui->graphicsView->setScene(scene);
-//    ui->graphicsView->setRenderHint(QPainter::Antialiasing);
+    ui->graphicsView->setRenderHint(QPainter::Antialiasing);
 
     scene->setSceneRect(-250, -250, 500, 500);
 
-    scene->addItem(lay);
+    scene->addItem(graphLay);
+}
+
+
+
+Scheme::~Scheme()
+{
+    delete ui;
 }

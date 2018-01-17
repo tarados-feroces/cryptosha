@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include <QApplication>
-#include "elements/graph_pin.h"
+#include "elements/graphPin.h"
 
 
 int main(int argc, char *argv[])

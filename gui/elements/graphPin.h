@@ -9,9 +9,10 @@
 class GraphPin : public QGraphicsItem
 {
 public:
-	GraphPin(QGraphicsItem *parent = 0);
-
+    GraphPin(QGraphicsItem *parent = 0);
 	GraphPin(int val, QGraphicsItem *parent = 0);
+    GraphPin(const GraphPin&) = delete;
+    ~GraphPin() = default;
 
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 

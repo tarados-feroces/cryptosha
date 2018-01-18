@@ -13,6 +13,8 @@
 #include "graphPin.h"
 #include "style.h"
 
+using gPinPtr = std::unique_ptr<GraphPin>;
+
 
 
 class GraphElement : public QObject, public QGraphicsItem
@@ -20,9 +22,11 @@ class GraphElement : public QObject, public QGraphicsItem
     Q_OBJECT
 
 public:
-    GraphElement(QGraphicsItem * parent = 0);
+    explicit GraphElement(QGraphicsItem * parent = 0);
     GraphElement(int input, int output, Style& _style, QGraphicsItem * parent = 0);
-    GraphElement(const GraphElement &) = default;
+    GraphElement(const GraphElement &) = delete;
+    GraphElement& operator=(const GraphElement&) = delete;
+    ~GraphElement() = default;
 
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
 
@@ -35,9 +39,9 @@ public:
 
     int id;
 
-    using gpin_ptr = std::shared_ptr<GraphPin>;
-    QVector<gpin_ptr> vInPins;
-    QVector<gpin_ptr> vOutPins;
+
+    std::vector<gPinPtr> vInPins;
+    std::vector<gPinPtr> vOutPins;
     Style style;
     int gX;
     int gY;
@@ -45,7 +49,7 @@ public:
     int OutputPins;
 
 
-    int get_width() const
+    int getWidth() const
     {
         return width;
     }

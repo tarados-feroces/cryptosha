@@ -70,16 +70,15 @@ void MainWindow::showSaveMenu()
 
     if (this->filename.size() == 0)
     {
-        QString filename = QFileDialog::getSaveFileName(this, tr("Save Document"), QDir::currentPath() + "/" +
+        QString path = QFileDialog::getSaveFileName(this, tr("Save Document"), QDir::currentPath() + "/" +
                                                         this->filename, tr("Cryptosha (*.cry)") );
 
-        if (filename.split('.')[filename.split('.').size() - 1] != "cry")
-            filename += ".cry";
+        if (path.split('.')[path.split('.').size() - 1] != "cry")
+            path += ".cry";
+
+        this->filename = path;
     }
-    else
-    {
-        QString filename = this->filename;
-    }
+
 
     if (this->filename.size() != 0)
     {
@@ -100,6 +99,8 @@ void MainWindow::showOpenMenu()
         this->showSaveMenu();
 
     QString filename = QFileDialog::getOpenFileName(this, tr("Open Document"), QDir::currentPath(), tr("Cryptosha (*.cry)") );
+    if (filename.size() == 0)
+        return;
     QFile file(filename);
     file.open(QIODevice::ReadOnly);
     QString data = file.readAll();
@@ -132,6 +133,7 @@ void MainWindow::showStyleMenu()
 {
     sSelect->show();
 }
+
 
 
 void MainWindow::styleUpdate()

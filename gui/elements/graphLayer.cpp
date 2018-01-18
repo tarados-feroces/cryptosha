@@ -13,21 +13,23 @@ GraphLayer::GraphLayer(QGraphicsItem *parent) : QGraphicsItem(parent)
 
 
 
-GraphLayer::GraphLayer(int _x, int _y, Style &_style, QGraphicsItem *parent) : QGraphicsItem(parent), style(_style)
+GraphLayer::GraphLayer(int _x, int _y, Style &_style, QGraphicsItem *parent)
+    : gX(_x), gY(_y), style(_style), QGraphicsItem(parent)
 {
-    setPos(_x, _y);
-    setFlag(GraphicsItemFlag::ItemIsSelectable);
+    setPos(gX, gY);
+//    setFlag(GraphicsItemFlag::ItemIsSelectable);
     int dist_x = 0;
-    int dist_y = 0;
-    for (int i = 0; i < 3; ++i)
+
+    for (int i = 0; i < 2; ++i)
     {
-        GraphElement * item = new GraphElement(2, 1, style, this);
-        dist_y = item->height * 1.5;
+        gElementPtr item = std::make_unique<GraphElement>(2, 1, style, this);
+
         item->gX = pos().x() + dist_x;
         item->gY = pos().y();
         item->setPinsCoords();
-        listElements.push_back(item);
         dist_x += item->width * 1.5;
+        listElements.push_back(std::move(item));
+
     }
 }
 
@@ -36,9 +38,17 @@ GraphLayer::GraphLayer(int _x, int _y, Style &_style, QGraphicsItem *parent) : Q
 void GraphLayer::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     int x = 0;
-    painter->setPen(QPen(Qt::white, 1));
-    painter->setBrush(Qt::white);
-//    painter->drawRect(0 , 0, (500+150)*listElements.size(), 150);
+    painter->setPen(QPen(Qt::black, 1));
+    painter->setBrush(Qt::black);
+    int wid = 0;
+    int hei = 0;
+
+    if (listElements.size())
+    {
+        wid = listElements.size() * listElements[0]->width * 1.5;
+        hei = listElements[0]->height;
+    }
+//    painter->drawRect(0 , 0, wid, hei);
 
     for(auto it = listElements.begin(); it != listElements.end(); it++)
     {
@@ -51,7 +61,13 @@ void GraphLayer::paint(QPainter *painter, const QStyleOptionGraphicsItem *option
 
 QRectF GraphLayer::boundingRect() const
 {
-    int y = 0;
-    int x = 0;
-    return QRectF(x , y, (500+150)*listElements.size(), 150);
+    int wid = 0;
+    int hei = 0;
+
+    if (listElements.size())
+    {
+        wid = listElements.size() * listElements[0]->width * 1.5;
+        hei = listElements[0]->height;
+    }
+    return QRectF(0 , 0, wid, hei);
 }

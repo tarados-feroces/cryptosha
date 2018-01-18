@@ -44,7 +44,7 @@ int Style::getHeight()
 }
 
 
-void Style::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
+void Style::paint(QPainter *painter)
 {
     QColor color;
     color.setRgb(123,123,123);

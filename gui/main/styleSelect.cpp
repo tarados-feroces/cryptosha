@@ -6,6 +6,8 @@ styleSelect::styleSelect(QWidget *parent) : QDialog(parent), ui(new Ui::styleSel
     ui->setupUi(this);
 }
 
+
+
 void styleSelect::on_Add_clicked()
 {
     QString filename = QFileDialog::getOpenFileName(this, tr("Open Document"), QDir::currentPath(), tr("Style (*.json)") );
@@ -13,6 +15,7 @@ void styleSelect::on_Add_clicked()
     Style newStyle(filename);
     style = newStyle;
 }
+
 
 
 void styleSelect::on_Default_clicked()
@@ -27,6 +30,7 @@ void styleSelect::accept()
     emit Update();
     this->close();
 }
+
 
 
 styleSelect::~styleSelect()

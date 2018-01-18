@@ -17,7 +17,7 @@ public:
     Style(QString _path);
     ~Style() {}
 
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+    void paint(QPainter *painter);
     void read();
     void changePath(QString _path);
     int getWidth();

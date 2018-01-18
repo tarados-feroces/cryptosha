@@ -16,11 +16,23 @@
   <widget class="QGraphicsView" name="graphicsView">
    <property name="geometry">
     <rect>
-     <x>280</x>
+     <x>60</x>
      <y>41</y>
-     <width>661</width>
-     <height>541</height>
+     <width>871</width>
+     <height>591</height>
     </rect>
+   </property>
+   <property name="verticalScrollBarPolicy">
+    <enum>Qt::ScrollBarAsNeeded</enum>
+   </property>
+   <property name="horizontalScrollBarPolicy">
+    <enum>Qt::ScrollBarAsNeeded</enum>
+   </property>
+   <property name="sizeAdjustPolicy">
+    <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
+   </property>
+   <property name="renderHints">
+    <set>QPainter::HighQualityAntialiasing|QPainter::TextAntialiasing</set>
    </property>
   </widget>
  </widget>

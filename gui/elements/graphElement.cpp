@@ -25,22 +25,22 @@ GraphElement::GraphElement(int input, int output, Style &_style, QGraphicsItem *
 
     for (int  i = 0; i < InputPins; ++i)
     {
-        gpin_ptr pin = std::make_shared<GraphPin>(this);
+        gPinPtr pin = std::make_unique<GraphPin>(this);
 
 		pin->number = i+1;
         pin->value = 1;
 
-        vInPins.push_back(pin);
+        vInPins.push_back(std::move(pin));
     }
 
     for (int  i = 0; i < OutputPins; ++i)
     {
-        gpin_ptr pin = std::make_shared<GraphPin>(this);
+        gPinPtr pin = std::make_unique<GraphPin>(this);
 
 		pin->number = i+1;
         pin->value = 0;
 
-        vOutPins.push_back(pin);
+        vOutPins.push_back(std::move(pin));
     }
 }
 
@@ -51,7 +51,7 @@ void GraphElement::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
     int k = 0;
     painter->setBrush(Qt::white);
 
-    style.paint(painter, option, widget);
+    style.paint(painter);
 
     for (auto i = vInPins.begin(); i != vInPins.end(); ++i)
     {
@@ -106,7 +106,7 @@ void GraphElement::setPinsCoords()
     {
 		k += width / (InputPins + 1);
         (*i)->gX = gX + k + 2;
-        (*i)->gY = gY - 2;
+        (*i)->gY = gY + 2;
     }
     k = 0;
     for (auto i = vOutPins.begin(); i != vOutPins.end(); ++i)

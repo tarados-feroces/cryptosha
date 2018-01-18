@@ -8,13 +8,15 @@ Scheme::Scheme(Style &_style, QWidget *parent) : QDialog(parent), ui(new Ui::Sch
     ui->setupUi(this);
     auto scene = new QGraphicsScene();
 //    auto style = new Style();
-    auto graphLay = new GraphLayer(-100, -100, style);
+
 
 
     ui->graphicsView->setScene(scene);
     ui->graphicsView->setRenderHint(QPainter::Antialiasing);
 
-    scene->setSceneRect(-250, -250, 500, 500);
+//    scene->setSceneRect(-250, -250, 500, 500);
+
+    auto graphLay = new GraphLayer(100, 100, style);
 
     scene->addItem(graphLay);
 }

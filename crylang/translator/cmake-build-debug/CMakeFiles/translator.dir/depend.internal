@@ -9,7 +9,12 @@ CMakeFiles/translator.dir/Reader/Reader.cpp.o
  /home/anton/projects/technopark/cryptosha/crylang/translator/Reader/Reader.cpp
  /home/anton/projects/technopark/cryptosha/crylang/translator/Reader/Reader.h
  /home/anton/projects/technopark/cryptosha/crylang/translator/convertor/convertor.h
+ /home/anton/projects/technopark/cryptosha/crylang/translator/includes.hpp
  /home/anton/projects/technopark/cryptosha/crylang/translator/regs.hpp
+ /home/anton/projects/technopark/cryptosha/crylang/translator/string_funcs.h
+ /home/anton/projects/technopark/cryptosha/crylang/translator/syntax_constants.hpp
+ /home/anton/projects/technopark/cryptosha/crylang/translator/vector_funcs.h
+ /home/anton/projects/technopark/cryptosha/crylang/translator/vector_funcs_impl.h
 CMakeFiles/translator.dir/convertor/convertor.cpp.o
  /home/anton/projects/technopark/cryptosha/crylang/language/code.hpp
  /home/anton/projects/technopark/cryptosha/crylang/language/crylang.hpp
@@ -17,6 +22,11 @@ CMakeFiles/translator.dir/convertor/convertor.cpp.o
  /home/anton/projects/technopark/cryptosha/crylang/language/typedefs.hpp
  /home/anton/projects/technopark/cryptosha/crylang/translator/convertor/convertor.cpp
  /home/anton/projects/technopark/cryptosha/crylang/translator/convertor/convertor.h
+ /home/anton/projects/technopark/cryptosha/crylang/translator/includes.hpp
+ /home/anton/projects/technopark/cryptosha/crylang/translator/string_funcs.h
+ /home/anton/projects/technopark/cryptosha/crylang/translator/syntax_constants.hpp
+ /home/anton/projects/technopark/cryptosha/crylang/translator/vector_funcs.h
+ /home/anton/projects/technopark/cryptosha/crylang/translator/vector_funcs_impl.h
 CMakeFiles/translator.dir/main.cpp.o
  /home/anton/projects/technopark/cryptosha/crylang/language/code.hpp
  /home/anton/projects/technopark/cryptosha/crylang/language/crylang.hpp
@@ -24,13 +34,20 @@ CMakeFiles/translator.dir/main.cpp.o
  /home/anton/projects/technopark/cryptosha/crylang/language/typedefs.hpp
  /home/anton/projects/technopark/cryptosha/crylang/translator/Reader/Reader.h
  /home/anton/projects/technopark/cryptosha/crylang/translator/convertor/convertor.h
+ /home/anton/projects/technopark/cryptosha/crylang/translator/includes.hpp
  /home/anton/projects/technopark/cryptosha/crylang/translator/main.cpp
  /home/anton/projects/technopark/cryptosha/crylang/translator/regs.hpp
-CMakeFiles/translator.dir/translator.cpp.o
+ /home/anton/projects/technopark/cryptosha/crylang/translator/string_funcs.h
+ /home/anton/projects/technopark/cryptosha/crylang/translator/syntax_constants.hpp
+ /home/anton/projects/technopark/cryptosha/crylang/translator/vector_funcs.h
+ /home/anton/projects/technopark/cryptosha/crylang/translator/vector_funcs_impl.h
+CMakeFiles/translator.dir/string_funcs.cpp.o
  /home/anton/projects/technopark/cryptosha/crylang/language/code.hpp
  /home/anton/projects/technopark/cryptosha/crylang/language/crylang.hpp
  /home/anton/projects/technopark/cryptosha/crylang/language/object_view.hpp
  /home/anton/projects/technopark/cryptosha/crylang/language/typedefs.hpp
- /home/anton/projects/technopark/cryptosha/crylang/translator/convertor/convertor.h
- /home/anton/projects/technopark/cryptosha/crylang/translator/translator.cpp
- /home/anton/projects/technopark/cryptosha/crylang/translator/translator.h
+ /home/anton/projects/technopark/cryptosha/crylang/translator/includes.hpp
+ /home/anton/projects/technopark/cryptosha/crylang/translator/string_funcs.cpp
+ /home/anton/projects/technopark/cryptosha/crylang/translator/string_funcs.h
+ /home/anton/projects/technopark/cryptosha/crylang/translator/vector_funcs.h
+ /home/anton/projects/technopark/cryptosha/crylang/translator/vector_funcs_impl.h

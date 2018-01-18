@@ -7,7 +7,7 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/anton/projects/technopark/cryptosha/crylang/translator/Reader/Reader.cpp" "/home/anton/projects/technopark/cryptosha/crylang/translator/cmake-build-debug/CMakeFiles/translator.dir/Reader/Reader.cpp.o"
   "/home/anton/projects/technopark/cryptosha/crylang/translator/convertor/convertor.cpp" "/home/anton/projects/technopark/cryptosha/crylang/translator/cmake-build-debug/CMakeFiles/translator.dir/convertor/convertor.cpp.o"
   "/home/anton/projects/technopark/cryptosha/crylang/translator/main.cpp" "/home/anton/projects/technopark/cryptosha/crylang/translator/cmake-build-debug/CMakeFiles/translator.dir/main.cpp.o"
-  "/home/anton/projects/technopark/cryptosha/crylang/translator/translator.cpp" "/home/anton/projects/technopark/cryptosha/crylang/translator/cmake-build-debug/CMakeFiles/translator.dir/translator.cpp.o"
+  "/home/anton/projects/technopark/cryptosha/crylang/translator/string_funcs.cpp" "/home/anton/projects/technopark/cryptosha/crylang/translator/cmake-build-debug/CMakeFiles/translator.dir/string_funcs.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

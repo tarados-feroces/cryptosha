@@ -1,9 +1,13 @@
 #pragma once
 #include "code.hpp"
+#include <map>
+
 
 
 namespace cry {
     namespace lang {
+
+
 
         namespace operators {
 
@@ -15,15 +19,27 @@ namespace cry {
                 def_operation(mult);
                 def_operation(div);
                 def_operation(mod);
+                def_operation(degree);
 
                 def_operation(class_member);
                 def_operation(ref);
 
                 def_operation(assign_copy);
                 def_operation(assign_move);
+                def_operation(swap);
+
+                def_operation(equal);
+                def_operation(not_equal);
+                def_operation(less);
+                def_operation(greater);
+
 
 
             #undef def_operation
+
+
+
+
         }
     }
 }

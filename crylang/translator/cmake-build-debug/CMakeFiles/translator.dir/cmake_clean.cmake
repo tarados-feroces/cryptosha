@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/translator.dir/main.cpp.o"
-  "CMakeFiles/translator.dir/translator.cpp.o"
   "CMakeFiles/translator.dir/convertor/convertor.cpp.o"
   "CMakeFiles/translator.dir/Reader/Reader.cpp.o"
+  "CMakeFiles/translator.dir/string_funcs.cpp.o"
   "translator.pdb"
   "translator"
 )

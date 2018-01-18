@@ -8,7 +8,12 @@ CMakeFiles/translator.dir/Reader/Reader.cpp.o: /home/anton/projects/technopark/c
 CMakeFiles/translator.dir/Reader/Reader.cpp.o: ../Reader/Reader.cpp
 CMakeFiles/translator.dir/Reader/Reader.cpp.o: ../Reader/Reader.h
 CMakeFiles/translator.dir/Reader/Reader.cpp.o: ../convertor/convertor.h
+CMakeFiles/translator.dir/Reader/Reader.cpp.o: ../includes.hpp
 CMakeFiles/translator.dir/Reader/Reader.cpp.o: ../regs.hpp
+CMakeFiles/translator.dir/Reader/Reader.cpp.o: ../string_funcs.h
+CMakeFiles/translator.dir/Reader/Reader.cpp.o: ../syntax_constants.hpp
+CMakeFiles/translator.dir/Reader/Reader.cpp.o: ../vector_funcs.h
+CMakeFiles/translator.dir/Reader/Reader.cpp.o: ../vector_funcs_impl.h
 
 CMakeFiles/translator.dir/convertor/convertor.cpp.o: /home/anton/projects/technopark/cryptosha/crylang/language/code.hpp
 CMakeFiles/translator.dir/convertor/convertor.cpp.o: /home/anton/projects/technopark/cryptosha/crylang/language/crylang.hpp
@@ -16,6 +21,11 @@ CMakeFiles/translator.dir/convertor/convertor.cpp.o: /home/anton/projects/techno
 CMakeFiles/translator.dir/convertor/convertor.cpp.o: /home/anton/projects/technopark/cryptosha/crylang/language/typedefs.hpp
 CMakeFiles/translator.dir/convertor/convertor.cpp.o: ../convertor/convertor.cpp
 CMakeFiles/translator.dir/convertor/convertor.cpp.o: ../convertor/convertor.h
+CMakeFiles/translator.dir/convertor/convertor.cpp.o: ../includes.hpp
+CMakeFiles/translator.dir/convertor/convertor.cpp.o: ../string_funcs.h
+CMakeFiles/translator.dir/convertor/convertor.cpp.o: ../syntax_constants.hpp
+CMakeFiles/translator.dir/convertor/convertor.cpp.o: ../vector_funcs.h
+CMakeFiles/translator.dir/convertor/convertor.cpp.o: ../vector_funcs_impl.h
 
 CMakeFiles/translator.dir/main.cpp.o: /home/anton/projects/technopark/cryptosha/crylang/language/code.hpp
 CMakeFiles/translator.dir/main.cpp.o: /home/anton/projects/technopark/cryptosha/crylang/language/crylang.hpp
@@ -23,14 +33,21 @@ CMakeFiles/translator.dir/main.cpp.o: /home/anton/projects/technopark/cryptosha/
 CMakeFiles/translator.dir/main.cpp.o: /home/anton/projects/technopark/cryptosha/crylang/language/typedefs.hpp
 CMakeFiles/translator.dir/main.cpp.o: ../Reader/Reader.h
 CMakeFiles/translator.dir/main.cpp.o: ../convertor/convertor.h
+CMakeFiles/translator.dir/main.cpp.o: ../includes.hpp
 CMakeFiles/translator.dir/main.cpp.o: ../main.cpp
 CMakeFiles/translator.dir/main.cpp.o: ../regs.hpp
+CMakeFiles/translator.dir/main.cpp.o: ../string_funcs.h
+CMakeFiles/translator.dir/main.cpp.o: ../syntax_constants.hpp
+CMakeFiles/translator.dir/main.cpp.o: ../vector_funcs.h
+CMakeFiles/translator.dir/main.cpp.o: ../vector_funcs_impl.h
 
-CMakeFiles/translator.dir/translator.cpp.o: /home/anton/projects/technopark/cryptosha/crylang/language/code.hpp
-CMakeFiles/translator.dir/translator.cpp.o: /home/anton/projects/technopark/cryptosha/crylang/language/crylang.hpp
-CMakeFiles/translator.dir/translator.cpp.o: /home/anton/projects/technopark/cryptosha/crylang/language/object_view.hpp
-CMakeFiles/translator.dir/translator.cpp.o: /home/anton/projects/technopark/cryptosha/crylang/language/typedefs.hpp
-CMakeFiles/translator.dir/translator.cpp.o: ../convertor/convertor.h
-CMakeFiles/translator.dir/translator.cpp.o: ../translator.cpp
-CMakeFiles/translator.dir/translator.cpp.o: ../translator.h
+CMakeFiles/translator.dir/string_funcs.cpp.o: /home/anton/projects/technopark/cryptosha/crylang/language/code.hpp
+CMakeFiles/translator.dir/string_funcs.cpp.o: /home/anton/projects/technopark/cryptosha/crylang/language/crylang.hpp
+CMakeFiles/translator.dir/string_funcs.cpp.o: /home/anton/projects/technopark/cryptosha/crylang/language/object_view.hpp
+CMakeFiles/translator.dir/string_funcs.cpp.o: /home/anton/projects/technopark/cryptosha/crylang/language/typedefs.hpp
+CMakeFiles/translator.dir/string_funcs.cpp.o: ../includes.hpp
+CMakeFiles/translator.dir/string_funcs.cpp.o: ../string_funcs.cpp
+CMakeFiles/translator.dir/string_funcs.cpp.o: ../string_funcs.h
+CMakeFiles/translator.dir/string_funcs.cpp.o: ../vector_funcs.h
+CMakeFiles/translator.dir/string_funcs.cpp.o: ../vector_funcs_impl.h
 

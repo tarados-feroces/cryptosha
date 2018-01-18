@@ -81,33 +81,9 @@ CMakeFiles/translator.dir/main.cpp.o.provides: CMakeFiles/translator.dir/main.cp
 CMakeFiles/translator.dir/main.cpp.o.provides.build: CMakeFiles/translator.dir/main.cpp.o
 
 
-CMakeFiles/translator.dir/translator.cpp.o: CMakeFiles/translator.dir/flags.make
-CMakeFiles/translator.dir/translator.cpp.o: ../translator.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/anton/projects/technopark/cryptosha/crylang/translator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/translator.dir/translator.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/translator.dir/translator.cpp.o -c /home/anton/projects/technopark/cryptosha/crylang/translator/translator.cpp
-
-CMakeFiles/translator.dir/translator.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/translator.dir/translator.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/anton/projects/technopark/cryptosha/crylang/translator/translator.cpp > CMakeFiles/translator.dir/translator.cpp.i
-
-CMakeFiles/translator.dir/translator.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/translator.dir/translator.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anton/projects/technopark/cryptosha/crylang/translator/translator.cpp -o CMakeFiles/translator.dir/translator.cpp.s
-
-CMakeFiles/translator.dir/translator.cpp.o.requires:
-
-.PHONY : CMakeFiles/translator.dir/translator.cpp.o.requires
-
-CMakeFiles/translator.dir/translator.cpp.o.provides: CMakeFiles/translator.dir/translator.cpp.o.requires
-	$(MAKE) -f CMakeFiles/translator.dir/build.make CMakeFiles/translator.dir/translator.cpp.o.provides.build
-.PHONY : CMakeFiles/translator.dir/translator.cpp.o.provides
-
-CMakeFiles/translator.dir/translator.cpp.o.provides.build: CMakeFiles/translator.dir/translator.cpp.o
-
-
 CMakeFiles/translator.dir/convertor/convertor.cpp.o: CMakeFiles/translator.dir/flags.make
 CMakeFiles/translator.dir/convertor/convertor.cpp.o: ../convertor/convertor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/anton/projects/technopark/cryptosha/crylang/translator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/translator.dir/convertor/convertor.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/anton/projects/technopark/cryptosha/crylang/translator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/translator.dir/convertor/convertor.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/translator.dir/convertor/convertor.cpp.o -c /home/anton/projects/technopark/cryptosha/crylang/translator/convertor/convertor.cpp
 
 CMakeFiles/translator.dir/convertor/convertor.cpp.i: cmake_force
@@ -131,7 +107,7 @@ CMakeFiles/translator.dir/convertor/convertor.cpp.o.provides.build: CMakeFiles/t
 
 CMakeFiles/translator.dir/Reader/Reader.cpp.o: CMakeFiles/translator.dir/flags.make
 CMakeFiles/translator.dir/Reader/Reader.cpp.o: ../Reader/Reader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/anton/projects/technopark/cryptosha/crylang/translator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/translator.dir/Reader/Reader.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/anton/projects/technopark/cryptosha/crylang/translator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/translator.dir/Reader/Reader.cpp.o"
 	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/translator.dir/Reader/Reader.cpp.o -c /home/anton/projects/technopark/cryptosha/crylang/translator/Reader/Reader.cpp
 
 CMakeFiles/translator.dir/Reader/Reader.cpp.i: cmake_force
@@ -153,20 +129,44 @@ CMakeFiles/translator.dir/Reader/Reader.cpp.o.provides: CMakeFiles/translator.di
 CMakeFiles/translator.dir/Reader/Reader.cpp.o.provides.build: CMakeFiles/translator.dir/Reader/Reader.cpp.o
 
 
+CMakeFiles/translator.dir/string_funcs.cpp.o: CMakeFiles/translator.dir/flags.make
+CMakeFiles/translator.dir/string_funcs.cpp.o: ../string_funcs.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/anton/projects/technopark/cryptosha/crylang/translator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/translator.dir/string_funcs.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/translator.dir/string_funcs.cpp.o -c /home/anton/projects/technopark/cryptosha/crylang/translator/string_funcs.cpp
+
+CMakeFiles/translator.dir/string_funcs.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/translator.dir/string_funcs.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/anton/projects/technopark/cryptosha/crylang/translator/string_funcs.cpp > CMakeFiles/translator.dir/string_funcs.cpp.i
+
+CMakeFiles/translator.dir/string_funcs.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/translator.dir/string_funcs.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/anton/projects/technopark/cryptosha/crylang/translator/string_funcs.cpp -o CMakeFiles/translator.dir/string_funcs.cpp.s
+
+CMakeFiles/translator.dir/string_funcs.cpp.o.requires:
+
+.PHONY : CMakeFiles/translator.dir/string_funcs.cpp.o.requires
+
+CMakeFiles/translator.dir/string_funcs.cpp.o.provides: CMakeFiles/translator.dir/string_funcs.cpp.o.requires
+	$(MAKE) -f CMakeFiles/translator.dir/build.make CMakeFiles/translator.dir/string_funcs.cpp.o.provides.build
+.PHONY : CMakeFiles/translator.dir/string_funcs.cpp.o.provides
+
+CMakeFiles/translator.dir/string_funcs.cpp.o.provides.build: CMakeFiles/translator.dir/string_funcs.cpp.o
+
+
 # Object files for target translator
 translator_OBJECTS = \
 "CMakeFiles/translator.dir/main.cpp.o" \
-"CMakeFiles/translator.dir/translator.cpp.o" \
 "CMakeFiles/translator.dir/convertor/convertor.cpp.o" \
-"CMakeFiles/translator.dir/Reader/Reader.cpp.o"
+"CMakeFiles/translator.dir/Reader/Reader.cpp.o" \
+"CMakeFiles/translator.dir/string_funcs.cpp.o"
 
 # External object files for target translator
 translator_EXTERNAL_OBJECTS =
 
 translator: CMakeFiles/translator.dir/main.cpp.o
-translator: CMakeFiles/translator.dir/translator.cpp.o
 translator: CMakeFiles/translator.dir/convertor/convertor.cpp.o
 translator: CMakeFiles/translator.dir/Reader/Reader.cpp.o
+translator: CMakeFiles/translator.dir/string_funcs.cpp.o
 translator: CMakeFiles/translator.dir/build.make
 translator: CMakeFiles/translator.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/anton/projects/technopark/cryptosha/crylang/translator/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable translator"
@@ -178,9 +178,9 @@ CMakeFiles/translator.dir/build: translator
 .PHONY : CMakeFiles/translator.dir/build
 
 CMakeFiles/translator.dir/requires: CMakeFiles/translator.dir/main.cpp.o.requires
-CMakeFiles/translator.dir/requires: CMakeFiles/translator.dir/translator.cpp.o.requires
 CMakeFiles/translator.dir/requires: CMakeFiles/translator.dir/convertor/convertor.cpp.o.requires
 CMakeFiles/translator.dir/requires: CMakeFiles/translator.dir/Reader/Reader.cpp.o.requires
+CMakeFiles/translator.dir/requires: CMakeFiles/translator.dir/string_funcs.cpp.o.requires
 
 .PHONY : CMakeFiles/translator.dir/requires
 

@@ -96,16 +96,28 @@
 		<Unit filename="/home/anton/projects/technopark/cryptosha/crylang/translator/convertor/convertor.h">
 			<Option target="translator"/>
 		</Unit>
+		<Unit filename="/home/anton/projects/technopark/cryptosha/crylang/translator/includes.hpp">
+			<Option target="translator"/>
+		</Unit>
 		<Unit filename="/home/anton/projects/technopark/cryptosha/crylang/translator/main.cpp">
 			<Option target="translator"/>
 		</Unit>
 		<Unit filename="/home/anton/projects/technopark/cryptosha/crylang/translator/regs.hpp">
 			<Option target="translator"/>
 		</Unit>
-		<Unit filename="/home/anton/projects/technopark/cryptosha/crylang/translator/translator.cpp">
+		<Unit filename="/home/anton/projects/technopark/cryptosha/crylang/translator/string_funcs.cpp">
 			<Option target="translator"/>
 		</Unit>
-		<Unit filename="/home/anton/projects/technopark/cryptosha/crylang/translator/translator.h">
+		<Unit filename="/home/anton/projects/technopark/cryptosha/crylang/translator/string_funcs.h">
+			<Option target="translator"/>
+		</Unit>
+		<Unit filename="/home/anton/projects/technopark/cryptosha/crylang/translator/syntax_constants.hpp">
+			<Option target="translator"/>
+		</Unit>
+		<Unit filename="/home/anton/projects/technopark/cryptosha/crylang/translator/vector_funcs.h">
+			<Option target="translator"/>
+		</Unit>
+		<Unit filename="/home/anton/projects/technopark/cryptosha/crylang/translator/vector_funcs_impl.h">
 			<Option target="translator"/>
 		</Unit>
 		<Unit filename="/home/anton/projects/technopark/cryptosha/crylang/translator/CMakeLists.txt">

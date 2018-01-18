@@ -1,5 +1,9 @@
-#include <regex>
-#include "convertor/convertor.h"
+#pragma once
+
+#include "includes.hpp"
+#include "../language/code.hpp"
+
+using namespace cry;
 
 static const string_t _for = string_t("\\s*for\\s*\\(\\s*(.+)\\s*;\\s*(.+)\\s*;\\s*(.+)\\s*\\)\\s*");
 

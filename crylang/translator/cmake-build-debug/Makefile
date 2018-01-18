@@ -204,32 +204,32 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/translator.dir/build.make CMakeFiles/translator.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-translator.o: translator.cpp.o
+string_funcs.o: string_funcs.cpp.o
 
-.PHONY : translator.o
+.PHONY : string_funcs.o
 
 # target to build an object file
-translator.cpp.o:
-	$(MAKE) -f CMakeFiles/translator.dir/build.make CMakeFiles/translator.dir/translator.cpp.o
-.PHONY : translator.cpp.o
+string_funcs.cpp.o:
+	$(MAKE) -f CMakeFiles/translator.dir/build.make CMakeFiles/translator.dir/string_funcs.cpp.o
+.PHONY : string_funcs.cpp.o
 
-translator.i: translator.cpp.i
+string_funcs.i: string_funcs.cpp.i
 
-.PHONY : translator.i
+.PHONY : string_funcs.i
 
 # target to preprocess a source file
-translator.cpp.i:
-	$(MAKE) -f CMakeFiles/translator.dir/build.make CMakeFiles/translator.dir/translator.cpp.i
-.PHONY : translator.cpp.i
+string_funcs.cpp.i:
+	$(MAKE) -f CMakeFiles/translator.dir/build.make CMakeFiles/translator.dir/string_funcs.cpp.i
+.PHONY : string_funcs.cpp.i
 
-translator.s: translator.cpp.s
+string_funcs.s: string_funcs.cpp.s
 
-.PHONY : translator.s
+.PHONY : string_funcs.s
 
 # target to generate assembly for a file
-translator.cpp.s:
-	$(MAKE) -f CMakeFiles/translator.dir/build.make CMakeFiles/translator.dir/translator.cpp.s
-.PHONY : translator.cpp.s
+string_funcs.cpp.s:
+	$(MAKE) -f CMakeFiles/translator.dir/build.make CMakeFiles/translator.dir/string_funcs.cpp.s
+.PHONY : string_funcs.cpp.s
 
 # Help Target
 help:
@@ -249,9 +249,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... translator.o"
-	@echo "... translator.i"
-	@echo "... translator.s"
+	@echo "... string_funcs.o"
+	@echo "... string_funcs.i"
+	@echo "... string_funcs.s"
 .PHONY : help
 
 

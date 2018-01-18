@@ -2,8 +2,8 @@
 
 
 namespace cry {
-    namespace lang {
 
+    namespace lang {
         namespace operators {
 
             #define def_operation(x) \

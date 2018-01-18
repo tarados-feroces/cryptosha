@@ -9,6 +9,8 @@ CrylangDir := crylang
 InterpreterDir := $(CrylangDir)/interpreter
 LanguageDir := $(CrylangDir)/language
 
+CalcDir := $(InterpreterDir)/calculation
+
 
 
 all: language_test
@@ -16,6 +18,7 @@ all: language_test
 clear:
 	rm -rf *.bin *.out *.test.bin
 
+calculations: _object
 
 language_test: _operators
 
@@ -24,3 +27,9 @@ _operators:
 	$(build) $(LanguageDir)/operators.cpp -o operators.test.bin
 	./operators.test.bin
 #----------------------[language_test]------------------------------------------
+
+#--------------------------type_test--------------------------------------------
+_object:
+	$(build) $(CalcDir)/object.cpp -o object.test.bin
+	./object.test.bin
+#-------------------------[type_test]-------------------------------------------

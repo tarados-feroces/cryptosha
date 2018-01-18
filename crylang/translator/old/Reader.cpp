@@ -581,8 +581,6 @@ namespace cryptosha
 			string_t str = input_handle();
 
 			list_handle(str_to_list(str));
-
-
 		}
 
 		code::code_type result = code;

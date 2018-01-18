@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 #include <vector>
 
@@ -14,11 +15,11 @@ namespace cry {
 	using   size_t = std::size_t;
 
     template<class... T>
-    using variant = boost::variant<T...>;
+    	using variant = boost::variant<T...>;
 
 	using exception_t = std::invalid_argument;
 	using bad_any_cast = boost::bad_any_cast;
 
-    using boost::get;
+    	using boost::get;
 	using boost::any_cast;
 }

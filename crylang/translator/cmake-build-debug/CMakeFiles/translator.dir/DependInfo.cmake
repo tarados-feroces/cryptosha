@@ -4,7 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/anton/projects/technopark/cryptosha/crylang/translator/convertor.cpp" "/home/anton/projects/technopark/cryptosha/crylang/translator/cmake-build-debug/CMakeFiles/translator.dir/convertor.cpp.o"
+  "/home/anton/projects/technopark/cryptosha/crylang/translator/Reader/Reader.cpp" "/home/anton/projects/technopark/cryptosha/crylang/translator/cmake-build-debug/CMakeFiles/translator.dir/Reader/Reader.cpp.o"
+  "/home/anton/projects/technopark/cryptosha/crylang/translator/convertor/convertor.cpp" "/home/anton/projects/technopark/cryptosha/crylang/translator/cmake-build-debug/CMakeFiles/translator.dir/convertor/convertor.cpp.o"
   "/home/anton/projects/technopark/cryptosha/crylang/translator/main.cpp" "/home/anton/projects/technopark/cryptosha/crylang/translator/cmake-build-debug/CMakeFiles/translator.dir/main.cpp.o"
   "/home/anton/projects/technopark/cryptosha/crylang/translator/translator.cpp" "/home/anton/projects/technopark/cryptosha/crylang/translator/cmake-build-debug/CMakeFiles/translator.dir/translator.cpp.o"
   )

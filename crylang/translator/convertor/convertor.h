@@ -1,15 +1,18 @@
+#pragma once
 #include <iostream>
 #include <string>
 #include <stack>
 #include <map>
 #include <vector>
-#include "../../language/object_view.hpp"
+#include "../../language/crylang.hpp"
+//#include "../../language/code.hpp"
 
 
 using string_t = std::string;
 using pair_t = std::pair<string_t, int>;
 using stack_type = std::stack<pair_t>;
 using map_t = std::map<string_t, int>;
+
 using namespace cry::code;
 using namespace cry::lang;
 
@@ -41,15 +44,15 @@ public:
 
         expression_t output;
 
-        std::vector<string_t> dividers = {"+", "-", "*", "/", "(", ")", "^", ","};
+        std::vector<string_t> dividers = {"+", "-", "*", "/", "(", ")", "^", ",", "=", "==", "!=", "<", ">", };
         std::stack<std::pair<string_t, int>> stack_op;
         std::stack<int> stack_num_args;
         std::vector<string_t> parsed_string = multiple_parse(str, dividers);
 
-        for(auto& string : parsed_string)
-            std::cout << string << std::endl;
-
-        std::cout << "******************" << std::endl;
+//        for(auto& string : parsed_string)
+//            std::cout << string << std::endl;
+//
+//        std::cout << "******************" << std::endl;
 
 
         int scope_counter = 0;
@@ -131,7 +134,9 @@ public:
         }
 
         for(auto& string : output)
-            std::cout << string._name << std::endl;
+            std::cout << string.name() << " ";
+
+        std::cout << std::endl;
 
         return output;
     }
@@ -233,24 +238,15 @@ public:
 
         for(auto& divider : dividers ) {
             for(int i = vec.size() - 1; i >= 0; --i) {
-//                std::cout << *it << std::endl;
 
                 auto parsed_string = parse(vec[i], divider);
 
-//                auto iter = it + 1;
-//                std::copy(parsed_string.begin(), parsed_string.end(), std::inserter(vec, iter));
-//                std::cout << *it << std::endl;
 
                 erase(vec, i);
                 insert(vec, i, parsed_string);
 
             }
-//            std::cout << *vec.begin() << std::endl;
-//
-//            auto parsed_string = parse(*vec.begin(), divider);
-//
-//            vec.erase(vec.begin());
-//            vec.insert(vec.begin(), parsed_string.begin(), parsed_string.end());
+
         }
 
         return vec;
@@ -263,11 +259,16 @@ public:
     map_t operations = {
 //            {"(", 0},
 //            {")", 0},
-            {"+", 1},
-            {"-", 1},
-            {"/", 2},
-            {"*", 2},
-            {"^", 3},
-            {".", 4},
+            {"!=", 0},
+            {"==", 0},
+            {">", 0},
+            {"<", 0},
+            {"=", 1},
+            {"+", 2},
+            {"-", 2},
+            {"/", 3},
+            {"*", 3},
+            {"^", 4},
+            {".", 5},
     };
 };

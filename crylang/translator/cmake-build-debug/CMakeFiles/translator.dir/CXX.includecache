@@ -6,6 +6,16 @@
 
 #IncludeRegexTransform: 
 
+/home/anton/projects/technopark/cryptosha/crylang/language/code.hpp
+object_view.hpp
+/home/anton/projects/technopark/cryptosha/crylang/language/object_view.hpp
+list
+-
+
+/home/anton/projects/technopark/cryptosha/crylang/language/crylang.hpp
+code.hpp
+/home/anton/projects/technopark/cryptosha/crylang/language/code.hpp
+
 /home/anton/projects/technopark/cryptosha/crylang/language/object_view.hpp
 typedefs.hpp
 /home/anton/projects/technopark/cryptosha/crylang/language/typedefs.hpp
@@ -22,11 +32,27 @@ boost/variant.hpp
 boost/dynamic_bitset.hpp
 -
 
-/home/anton/projects/technopark/cryptosha/crylang/translator/convertor.cpp
-convertor.h
-/home/anton/projects/technopark/cryptosha/crylang/translator/convertor.h
+/home/anton/projects/technopark/cryptosha/crylang/translator/Reader/Reader.cpp
+Reader.h
+/home/anton/projects/technopark/cryptosha/crylang/translator/Reader/Reader.h
 
-/home/anton/projects/technopark/cryptosha/crylang/translator/convertor.h
+/home/anton/projects/technopark/cryptosha/crylang/translator/Reader/Reader.h
+../convertor/convertor.h
+/home/anton/projects/technopark/cryptosha/crylang/translator/convertor/convertor.h
+fstream
+-
+regex
+-
+../regs.hpp
+/home/anton/projects/technopark/cryptosha/crylang/translator/regs.hpp
+../../language/code.hpp
+/home/anton/projects/technopark/cryptosha/crylang/language/code.hpp
+
+/home/anton/projects/technopark/cryptosha/crylang/translator/convertor/convertor.cpp
+convertor.h
+/home/anton/projects/technopark/cryptosha/crylang/translator/convertor/convertor.h
+
+/home/anton/projects/technopark/cryptosha/crylang/translator/convertor/convertor.h
 iostream
 -
 string
@@ -37,20 +63,34 @@ map
 -
 vector
 -
-../language/object_view.hpp
-/home/anton/projects/technopark/cryptosha/crylang/language/object_view.hpp
+../../language/crylang.hpp
+/home/anton/projects/technopark/cryptosha/crylang/language/crylang.hpp
 
 /home/anton/projects/technopark/cryptosha/crylang/translator/main.cpp
 iostream
 -
-convertor.h
-/home/anton/projects/technopark/cryptosha/crylang/translator/convertor.h
+Reader/Reader.h
+/home/anton/projects/technopark/cryptosha/crylang/translator/Reader/Reader.h
 list
 -
+
+/home/anton/projects/technopark/cryptosha/crylang/translator/regs.hpp
+regex
+-
+convertor/convertor.h
+/home/anton/projects/technopark/cryptosha/crylang/translator/convertor/convertor.h
 
 /home/anton/projects/technopark/cryptosha/crylang/translator/translator.cpp
 translator.h
 /home/anton/projects/technopark/cryptosha/crylang/translator/translator.h
 
 /home/anton/projects/technopark/cryptosha/crylang/translator/translator.h
+iostream
+-
+fstream
+-
+convertor/convertor.h
+/home/anton/projects/technopark/cryptosha/crylang/translator/convertor/convertor.h
+../language/code.hpp
+/home/anton/projects/technopark/cryptosha/crylang/language/code.hpp
 

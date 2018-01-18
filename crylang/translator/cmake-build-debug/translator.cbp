@@ -84,13 +84,22 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/anton/projects/technopark/cryptosha/crylang/translator/convertor.cpp">
+		<Unit filename="/home/anton/projects/technopark/cryptosha/crylang/translator/Reader/Reader.cpp">
 			<Option target="translator"/>
 		</Unit>
-		<Unit filename="/home/anton/projects/technopark/cryptosha/crylang/translator/convertor.h">
+		<Unit filename="/home/anton/projects/technopark/cryptosha/crylang/translator/Reader/Reader.h">
+			<Option target="translator"/>
+		</Unit>
+		<Unit filename="/home/anton/projects/technopark/cryptosha/crylang/translator/convertor/convertor.cpp">
+			<Option target="translator"/>
+		</Unit>
+		<Unit filename="/home/anton/projects/technopark/cryptosha/crylang/translator/convertor/convertor.h">
 			<Option target="translator"/>
 		</Unit>
 		<Unit filename="/home/anton/projects/technopark/cryptosha/crylang/translator/main.cpp">
+			<Option target="translator"/>
+		</Unit>
+		<Unit filename="/home/anton/projects/technopark/cryptosha/crylang/translator/regs.hpp">
 			<Option target="translator"/>
 		</Unit>
 		<Unit filename="/home/anton/projects/technopark/cryptosha/crylang/translator/translator.cpp">

@@ -3,5 +3,5 @@ project(translator)
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(SOURCE_FILES main.cpp translator.cpp translator.h convertor/convertor.h convertor/convertor.cpp)
+set(SOURCE_FILES main.cpp translator.cpp translator.h convertor/convertor.h convertor/convertor.cpp Reader/Reader.h Reader/Reader.cpp regs.hpp)
 add_executable(translator ${SOURCE_FILES})

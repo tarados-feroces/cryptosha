@@ -123,32 +123,59 @@ translator/fast:
 	$(MAKE) -f CMakeFiles/translator.dir/build.make CMakeFiles/translator.dir/build
 .PHONY : translator/fast
 
-convertor.o: convertor.cpp.o
+Reader/Reader.o: Reader/Reader.cpp.o
 
-.PHONY : convertor.o
+.PHONY : Reader/Reader.o
 
 # target to build an object file
-convertor.cpp.o:
-	$(MAKE) -f CMakeFiles/translator.dir/build.make CMakeFiles/translator.dir/convertor.cpp.o
-.PHONY : convertor.cpp.o
+Reader/Reader.cpp.o:
+	$(MAKE) -f CMakeFiles/translator.dir/build.make CMakeFiles/translator.dir/Reader/Reader.cpp.o
+.PHONY : Reader/Reader.cpp.o
 
-convertor.i: convertor.cpp.i
+Reader/Reader.i: Reader/Reader.cpp.i
 
-.PHONY : convertor.i
+.PHONY : Reader/Reader.i
 
 # target to preprocess a source file
-convertor.cpp.i:
-	$(MAKE) -f CMakeFiles/translator.dir/build.make CMakeFiles/translator.dir/convertor.cpp.i
-.PHONY : convertor.cpp.i
+Reader/Reader.cpp.i:
+	$(MAKE) -f CMakeFiles/translator.dir/build.make CMakeFiles/translator.dir/Reader/Reader.cpp.i
+.PHONY : Reader/Reader.cpp.i
 
-convertor.s: convertor.cpp.s
+Reader/Reader.s: Reader/Reader.cpp.s
 
-.PHONY : convertor.s
+.PHONY : Reader/Reader.s
 
 # target to generate assembly for a file
-convertor.cpp.s:
-	$(MAKE) -f CMakeFiles/translator.dir/build.make CMakeFiles/translator.dir/convertor.cpp.s
-.PHONY : convertor.cpp.s
+Reader/Reader.cpp.s:
+	$(MAKE) -f CMakeFiles/translator.dir/build.make CMakeFiles/translator.dir/Reader/Reader.cpp.s
+.PHONY : Reader/Reader.cpp.s
+
+convertor/convertor.o: convertor/convertor.cpp.o
+
+.PHONY : convertor/convertor.o
+
+# target to build an object file
+convertor/convertor.cpp.o:
+	$(MAKE) -f CMakeFiles/translator.dir/build.make CMakeFiles/translator.dir/convertor/convertor.cpp.o
+.PHONY : convertor/convertor.cpp.o
+
+convertor/convertor.i: convertor/convertor.cpp.i
+
+.PHONY : convertor/convertor.i
+
+# target to preprocess a source file
+convertor/convertor.cpp.i:
+	$(MAKE) -f CMakeFiles/translator.dir/build.make CMakeFiles/translator.dir/convertor/convertor.cpp.i
+.PHONY : convertor/convertor.cpp.i
+
+convertor/convertor.s: convertor/convertor.cpp.s
+
+.PHONY : convertor/convertor.s
+
+# target to generate assembly for a file
+convertor/convertor.cpp.s:
+	$(MAKE) -f CMakeFiles/translator.dir/build.make CMakeFiles/translator.dir/convertor/convertor.cpp.s
+.PHONY : convertor/convertor.cpp.s
 
 main.o: main.cpp.o
 
@@ -213,9 +240,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... translator"
-	@echo "... convertor.o"
-	@echo "... convertor.i"
-	@echo "... convertor.s"
+	@echo "... Reader/Reader.o"
+	@echo "... Reader/Reader.i"
+	@echo "... Reader/Reader.s"
+	@echo "... convertor/convertor.o"
+	@echo "... convertor/convertor.i"
+	@echo "... convertor/convertor.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

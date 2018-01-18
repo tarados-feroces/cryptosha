@@ -1,3 +1,4 @@
+#pragma once
 #include "object_view.hpp"
 
 
@@ -13,14 +14,15 @@ namespace cry {
 			condition,       ///< for branching
 			jump,            ///< for jumping to another command
 			empty            ///< command-stub
-		}
+		};
 
-		class command_type
-        {
+		struct command_type
+        	{
+		
 			size_t mark;
 			keywords keyword;
 			parameters_t parameters;
-		}
+		};
 
 		using code_type = std::vector<command_type>;
 	}

@@ -90,47 +90,47 @@ namespace cryptosha {
 
 		if (std::regex_search(input_str, res, m_for)) {
 
-			ns_stack.push(st_el);
-			ns_stack.top().keyword = stack_kw::m_for;
+            ns_stack.push(st_el);
+            ns_stack.top().keyword = stack_kw::m_for;
 
             code_element.mark = mark_number++;
             code_element.keyword = keywords::expression;
-			code_element.parameters = simple_cmd_handle(res[1].str());
-			ns_stack.top().simple_command_list.push_back(code_element);
+            code_element.parameters = simple_cmd_handle(res[1].str());
+            ns_stack.top().simple_command_list.push_back(code_element);
 
-			code_element.mark = mark_number++;
-			code_element.keyword = keywords::condition;
+            code_element.mark = mark_number++;
+            code_element.keyword = keywords::condition;
             code_element.parameters = mark_number;
             code_element.parameters = simple_cmd_handle(res[2].str());
-			ns_stack.top().simple_command_list.push_back(code_element);
+            ns_stack.top().simple_command_list.push_back(code_element);
 
             code_element.mark = mark_number++;
             code_element.keyword = keywords::expression;
             code_element.parameters = simple_cmd_handle(res[3].str());
             ns_stack.top().simple_command_list.push_back(code_element);
-			ns_stack.top().position = num_of_for_additional_blocks - 1;
+            ns_stack.top().position = num_of_for_additional_blocks - 1;
 
-			code_element.mark = mark_number++;
-			code_element.keyword = keywords::jump;
-			code_element.parameters = mark_number - num_of_for_additional_blocks;
-			ns_stack.top().simple_command_list.push_back(code_element);
+            code_element.mark = mark_number++;
+            code_element.keyword = keywords::jump;
+            code_element.parameters = mark_number - num_of_for_additional_blocks;
+            ns_stack.top().simple_command_list.push_back(code_element);
 
-			return;
+            return;
 		}
 
 		else if (input_str == syntax::block_open_scope) {
             st_el.keyword = stack_kw::open_scope;
             st_el.position = 0;
-			ns_stack.push(st_el);
-			return;
+            ns_stack.push(st_el);
+            return;
 		}
 
 		else if (input_str == syntax::block_close_scope) {
 			if (!ns_stack.empty())
-				stack_close();
+                stack_close();
 			else {
-				output << output::err_str << std::endl;
-				return;
+                output << output::err_str << std::endl;
+                return;
 			}
 			if (!ns_stack.empty()) {
 				if (ns_stack.top().keyword == stack_kw::m_for)
@@ -176,7 +176,7 @@ namespace cryptosha {
 		list_handle(funcs::multiple_parse(str, dividers));
 
 		while (!ns_stack.empty()) {
-			string_t str = input_handle();
+            string_t str = input_handle();
             str = funcs::space_free(str);
             list_handle(funcs::multiple_parse(str, dividers));
 		}

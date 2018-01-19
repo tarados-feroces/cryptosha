@@ -70,7 +70,8 @@ namespace cryptosha {
 
 		convertor cmd_creator;
 
-		static const size_t num_of_for_additional_blocks = 4;
+		static const size_t num_of_for_blocks_before_ins = 3;
+		static const size_t num_of_for_blocks_after_ins = 3;
 
 		size_t mark_number = 0;
 

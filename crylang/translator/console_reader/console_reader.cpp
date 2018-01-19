@@ -19,8 +19,7 @@ namespace cryptosha {
 
 	void console_reader::stack_close() {
 		if (ns_stack.empty()) {
-			output << output::err_str << std::endl;
-			return;
+			std::invalid_argument("bad scope sequence");
 		}
 		code::code_type code_st_el = ns_stack.top().simple_command_list;
 		ns_stack.pop();
@@ -105,14 +104,23 @@ namespace cryptosha {
 			ns_stack.top().simple_command_list.push_back(code_element);
 
 			code_element.mark = mark_number++;
+			code_element.keyword = keywords::jump;
+			code_element.parameters = mark_number + num_of_for_blocks_after_ins - 1;
+			ns_stack.top().simple_command_list.push_back(code_element);
+
+			code_element.mark = mark_number++;
 			code_element.keyword = keywords::expression;
 			code_element.parameters = simple_cmd_handle(res[3].str());
 			ns_stack.top().simple_command_list.push_back(code_element);
-			ns_stack.top().position = num_of_for_additional_blocks - 1;
+			ns_stack.top().position = num_of_for_blocks_before_ins;
 
 			code_element.mark = mark_number++;
 			code_element.keyword = keywords::jump;
-			code_element.parameters = mark_number - num_of_for_additional_blocks;
+			code_element.parameters = mark_number - num_of_for_blocks_before_ins - num_of_for_blocks_after_ins + 2;
+			ns_stack.top().simple_command_list.push_back(code_element);
+
+			code_element.mark = mark_number++;
+			code_element.keyword = keywords::empty;
 			ns_stack.top().simple_command_list.push_back(code_element);
 
 			return;
@@ -129,8 +137,7 @@ namespace cryptosha {
 			if (!ns_stack.empty())
 				stack_close();
 			else {
-				output << output::err_str << std::endl;
-				return;
+				throw std::invalid_argument("bad scope sequence");
 			}
 			if (!ns_stack.empty()) {
 				if (ns_stack.top().keyword == stack_kw::m_for)
@@ -178,7 +185,11 @@ namespace cryptosha {
 		while (!ns_stack.empty()) {
 			string_t str = input_handle();
 			str = funcs::space_free(str);
+
 			list_handle(funcs::multiple_parse(str, dividers));
+
+
+
 		}
 
 		code::code_type result = code;

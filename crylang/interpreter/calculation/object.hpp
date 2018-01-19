@@ -7,17 +7,21 @@
 #include <iostream>
 #include <type_traits>
 
+#include <string>
+
 namespace crylang {
 
     using int_t = std::int64_t;
     using vector_t = std::vector<object>;
     using float_t = double;
+    using string_t = cry::string_t;
 
     using type_variant =
         std::variant<
             nothing,
             int_t,
-            vector_t
+            vector_t,
+            string_t
             //function,
             //sequence,
          >;
@@ -53,11 +57,31 @@ namespace crylang {
     template<class T = nothing>
     auto make_object( T variable ) -> object
     {
-        if constexpr( std::is_same<T, int_t>::value )
+
+        bool constexpr is_int = std::is_same<T, int_t>::value ||
+                           std::is_same<T, long>::value ||
+                           std::is_same<T, long long>::value ||
+                           std::is_same<T, int>::value ||
+                           std::is_same<T, short>::value;
+
+        bool constexpr is_float = std::is_same<T, float_t>::value ||
+                                  std::is_same<T, float>::value ||
+                                  std::is_same<T, double>::value;
+
+        bool constexpr is_string = std::is_same<T, cry::string_t>::value ||
+                                  std::is_same<T, std::string>::value ||
+                                  std::is_same<T, char *>::value ||
+                                  std::is_same<T, const char *>::value;
+
+        if constexpr( is_int )
             return object( type::Int, int_t(variable) );
 
-        if constexpr( std::is_same<T, float_t>::value )
+        if constexpr( is_float )
             return object( type::Float, float_t(variable) );
+
+        if constexpr( is_string )
+            return object( type::String, string_t(variable) );
+
 
         std::cout << "Unknown type : " << typeid(T).name() << std::endl;
         return object( type::Nothing, nothing() );

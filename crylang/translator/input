@@ -1,10 +1,10 @@
 {
-for(h = 1;
+for(h == 1;
 i < 7;
  i = i + 1)
 
 {
-for(i = 1; i < 7; i = i + 1){
+for(k.i = 1; i < 7; i = i + 1){
     k = m
     for(v = 2; v < 8; v = v + 1)
         l + o

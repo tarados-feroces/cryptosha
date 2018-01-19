@@ -1,15 +1,14 @@
 #include <iostream>
-//#include "convertor/convertor.h"
-#include "Reader/console_reader.h"
-#include <list>
+#include "console_reader/console_reader.h"
 
-int main() {
+
+int main(int argc, char* argv[]) {
 
     cryptosha::console_reader reader("/home/anton/projects/technopark/cryptosha/crylang/translator/input", "output");
 
     auto code = reader.read();
 //    cry::any_cast<std::vector<cry::lang::object_view>>(code.);
-    std::cout <<"********************" <<std::endl;
+//    std::cout <<"********************" <<std::endl;
 
     for(auto& i : code) {
         auto vec = cry::any_cast<std::vector<cry::lang::object_view>>(i.parameters);

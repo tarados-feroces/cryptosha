@@ -25,13 +25,14 @@ namespace funcs {
     std::vector<string_t> multiple_parse(string_t &input_str, std::vector<string_t> &dividers) {
 
         std::vector<string_t> vec{input_str};
-        string_t current;
 
-        for (auto &divider : dividers) {
-            for (int i = vec.size() - 1; i >= 0; --i) {
+        for (auto& divider : dividers) {
+            for (long long int i = vec.size() - 1; i >= 0; --i) {
+
+                if(find(dividers, vec[i]))
+                    continue;
 
                 auto parsed_string = parse(vec[i], divider);
-
 
                 erase(vec, i);
                 insert(vec, i, parsed_string);

@@ -1,8 +1,6 @@
 #pragma once
 
 #include "../includes.hpp"
-#include "../string_funcs.h"
-#include "../vector_funcs.h"
 #include <iostream>
 #include <stack>
 #include <vector>

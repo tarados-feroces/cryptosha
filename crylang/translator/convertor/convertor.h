@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../includes.hpp"
-#include "../string_funcs.h"
+#include "../funcs/string_funcs.h"
 #include "../syntax_constants.hpp"
 
 #include <iostream>
@@ -46,6 +46,8 @@ private:
 
     std::vector<string_t> dividers;
 
+    size_t max_length_of_operator = 2;
+
     map_t operations = {
             {"=", 0},
             {"<-", 0},
@@ -76,5 +78,6 @@ private:
             {"%", operators::mod},
             {"*", operators::mult},
             {"^", operators::degree},
+            {".", operators::class_member},
     };
 };

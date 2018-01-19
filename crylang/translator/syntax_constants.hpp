@@ -9,6 +9,8 @@ namespace syntax {
     static const cry::string_t close_scope = ")";
 
     static const cry::string_t class_member = ".";
+
+    static const cry::string_t divider = ",";
 }
 
 

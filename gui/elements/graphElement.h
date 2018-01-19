@@ -11,9 +11,10 @@
 #include <memory>
 
 #include "graphPin.h"
-#include "style.h"
+#include "pblockstyle.h"
 
 using gPinPtr = std::unique_ptr<GraphPin>;
+
 
 
 
@@ -23,7 +24,7 @@ class GraphElement : public QObject, public QGraphicsItem
 
 public:
     explicit GraphElement(QGraphicsItem * parent = 0);
-    GraphElement(int input, int output, Style& _style, QGraphicsItem * parent = 0);
+    GraphElement(int input, int output, stylePtr _style, QGraphicsItem * parent = 0);
     GraphElement(const GraphElement &) = delete;
     GraphElement& operator=(const GraphElement&) = delete;
     ~GraphElement() = default;
@@ -42,17 +43,12 @@ public:
 
     std::vector<gPinPtr> vInPins;
     std::vector<gPinPtr> vOutPins;
-    Style style;
+    stylePtr style;
     int gX;
     int gY;
     int InputPins;
     int OutputPins;
 
-
-    int getWidth() const
-    {
-        return width;
-    }
 
 signals:
     void coordChanged();
@@ -67,8 +63,8 @@ public:
     QString type;
     QString name;
 
-    int width = 150;
-    int height = 50;
+    int width;
+    int height;
 };
 
 #endif // GRAPH_ELEMENT_H

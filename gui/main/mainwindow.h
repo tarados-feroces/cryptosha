@@ -5,14 +5,13 @@
 #include <QGraphicsScene>
 #include <QPainter>
 #include <QMenuBar>
-#include <QFile>
-#include <QFileDialog>
 #include <QDir>
 #include <QAction>
+#include <memory>
 #include "styleselect.h"
-#include "elements/style.h"
 
 
+using sSelectPtr = std::unique_ptr<StyleSelect>;
 
 namespace Ui {
 class MainWindow;
@@ -35,6 +34,7 @@ public:
 public slots:
     void on_runButton_clicked();
     void showSaveMenu();
+    void showSaveAsMenu();
     void showOpenMenu();
     void showNewMenu();
     void showStyleMenu();
@@ -47,8 +47,8 @@ private:
     QMenu *settingsMenu;
     QString filename;
     bool fileSaved;
-    Style style;
-    styleSelect *sSelect;
+    stylePtr style;
+    sSelectPtr sSelect;
 };
 
 #endif // MAINWINDOW_H

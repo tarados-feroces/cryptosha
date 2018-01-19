@@ -31,7 +31,11 @@ public:
         Scheme->resize(967, 649);
         graphicsView = new QGraphicsView(Scheme);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
-        graphicsView->setGeometry(QRect(280, 41, 661, 541));
+        graphicsView->setGeometry(QRect(60, 41, 871, 591));
+        graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+        graphicsView->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContentsOnFirstShow);
+        graphicsView->setRenderHints(QPainter::HighQualityAntialiasing|QPainter::TextAntialiasing);
 
         retranslateUi(Scheme);
 

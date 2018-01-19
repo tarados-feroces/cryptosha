@@ -3,7 +3,7 @@
 #include "elements/graphLayer.h"
 #include <QGraphicsScene>
 
-Scheme::Scheme(Style &_style, QWidget *parent) : QDialog(parent), ui(new Ui::Scheme), style(_style)
+Scheme::Scheme(stylePtr _style, QWidget *parent) : QDialog(parent), ui(new Ui::Scheme), style(_style)
 {
     ui->setupUi(this);
     auto scene = new QGraphicsScene();

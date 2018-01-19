@@ -2,7 +2,7 @@
 #define SCHEME_H
 
 #include <QDialog>
-#include "elements/style.h"
+#include "elements/pblockstyle.h"
 
 
 namespace Ui{
@@ -15,12 +15,12 @@ class Scheme : public QDialog
     Q_OBJECT
 
 public:
-    Scheme(Style &_style, QWidget *parent = 0);
+    Scheme(stylePtr _style, QWidget *parent = 0);
     virtual ~Scheme();
 
 private:
     Ui::Scheme *ui;
-    Style style;
+    stylePtr style;
 };
 
 #endif // SCHEME_H

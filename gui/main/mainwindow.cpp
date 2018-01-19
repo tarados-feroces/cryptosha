@@ -3,19 +3,25 @@
 #include "scheme.h"
 #include <QTextEdit>
 
+
+
+QString newName = QDir::currentPath() + "/untitled.cry";
+
+
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow), fileSaved(true)
 {
     ui->setupUi(this);
+    menuBar();
     createFileMenu();
     createSettingsMenu();
     ui->menuBar->show();
-    Style newStyle;
-    style = newStyle;
-    sSelect = new styleSelect(this);
+    style = std::make_shared<Style>();
+    sSelect = std::make_unique<StyleSelect>(this);
     QObject::connect(ui->textEdit, SIGNAL(textChanged()), this,  SLOT(changed()));
-    QObject::connect(sSelect, SIGNAL(Update()), this,  SLOT(styleUpdate()));
+    QObject::connect(sSelect.get(), SIGNAL(Update()), this,  SLOT(styleUpdate()));
 }
 
 
@@ -27,7 +33,6 @@ void MainWindow::changed()
         this->fileSaved = false;
         this->setWindowTitle("Cryptosha   " + this->filename + "*");
     }
-
 }
 
 
@@ -36,18 +41,22 @@ void MainWindow::createFileMenu()
 {
     fileMenu = menuBar()->addMenu(tr("&File"));
 
-    auto new_action = new QAction(tr("&New"), this);
-    QObject::connect(new_action, SIGNAL(triggered(bool)), this,  SLOT(showNewMenu()));
+    auto newAction = new QAction(tr("&New"), this);
+    QObject::connect(newAction, SIGNAL(triggered(bool)), this,  SLOT(showNewMenu()));
 
-    auto open_action = new QAction(tr("&Open"), this);
-    QObject::connect(open_action, SIGNAL(triggered(bool)), this,  SLOT(showOpenMenu()));
+    auto openAction = new QAction(tr("&Open"), this);
+    QObject::connect(openAction, SIGNAL(triggered(bool)), this,  SLOT(showOpenMenu()));
 
-    auto save_action = new QAction(tr("&Save"), this);
-    QObject::connect(save_action, SIGNAL(triggered(bool)), this,  SLOT(showSaveMenu()));
+    auto saveAction = new QAction(tr("&Save"), this);
+    QObject::connect(saveAction, SIGNAL(triggered(bool)), this,  SLOT(showSaveMenu()));
 
-    fileMenu->addAction(new_action);
-    fileMenu->addAction(open_action);
-    fileMenu->addAction(save_action);
+    auto saveAsAction = new QAction(tr("&Save As"), this);
+    QObject::connect(saveAsAction, SIGNAL(triggered(bool)), this,  SLOT(showSaveAsMenu()));
+
+    fileMenu->addAction(newAction);
+    fileMenu->addAction(openAction);
+    fileMenu->addAction(saveAction);
+    fileMenu->addAction(saveAsAction);
 }
 
 
@@ -68,17 +77,40 @@ void MainWindow::createSettingsMenu()
 void MainWindow::showSaveMenu()
 {
 
-    if (this->filename.size() == 0)
+//    if (this->filename.size() == 0)
+//    {
+//        QString path = QFileDialog::getSaveFileName(this, tr("Save Document"), QDir::currentPath() + "/" +
+//                                                        this->filename, tr("Cryptosha (*.cry)") );
+
+//        if (path.split('.')[path.split('.').size() - 1] != "cry")
+//            path += ".cry";
+
+//        this->filename = path;
+//    }
+
+
+    if (this->filename.size() != 0)
     {
-        QString path = QFileDialog::getSaveFileName(this, tr("Save Document"), QDir::currentPath() + "/" +
-                                                        this->filename, tr("Cryptosha (*.cry)") );
-
-        if (path.split('.')[path.split('.').size() - 1] != "cry")
-            path += ".cry";
-
-        this->filename = path;
+        QFile file(filename);
+        file.open(QIODevice::WriteOnly);
+        file.write(ui->textEdit->toPlainText().toUtf8());
+        file.close();
+        this->fileSaved = true;
+        this->setWindowTitle("Cryptosha   " + this->filename);
     }
+}
 
+
+
+void MainWindow::showSaveAsMenu()
+{
+    QString path = QFileDialog::getSaveFileName(this, tr("Save Document"), QDir::currentPath() + "/" +
+                                                    this->filename, tr("Cryptosha (*.cry)") );
+
+    if (path.split('.')[path.split('.').size() - 1] != "cry")
+        path += ".cry";
+
+    this->filename = path;
 
     if (this->filename.size() != 0)
     {
@@ -119,12 +151,12 @@ void MainWindow::showNewMenu()
     if (!this->fileSaved)
         this->showSaveMenu();
 
-    QString filename = QDir::currentPath() + "/untitled.cry";
+    QString filename = newName;
     this->filename = filename;
 
     ui->textEdit->setText(QString());
-    this->fileSaved = true;
-    this->setWindowTitle("Cryptosha   " + this->filename);
+    this->fileSaved = false;
+    this->setWindowTitle("Cryptosha   " + this->filename + "*");
 }
 
 

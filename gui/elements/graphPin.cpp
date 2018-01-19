@@ -42,8 +42,5 @@ QRectF GraphPin::boundingRect() const
 void GraphPin::mousePressEvent(QGraphicsSceneMouseEvent *event)
 {
     QGraphicsItem::mousePressEvent(event);
-    if(this->isSelected())
-        qDebug() << "lol1" ;
     update();
-
 }

@@ -13,15 +13,16 @@ GraphElement::GraphElement(QGraphicsItem *parent)
 
 
 
-GraphElement::GraphElement(int input, int output, Style &_style, QGraphicsItem * parent)
+GraphElement::GraphElement(int input, int output, stylePtr _style, QGraphicsItem * parent)
     : QGraphicsItem(parent), style(_style)
 {
 	setFlag(QGraphicsItem::ItemIsSelectable);
     InputPins = input;
     OutputPins = output;
 
-    width = style.getWidth();
-    height = style.getHeight();
+    width = style->getWidth();
+    height = style->getHeight();
+    int k = 0;
 
     for (int  i = 0; i < InputPins; ++i)
     {
@@ -40,6 +41,7 @@ GraphElement::GraphElement(int input, int output, Style &_style, QGraphicsItem *
 		pin->number = i+1;
         pin->value = 0;
 
+
         vOutPins.push_back(std::move(pin));
     }
 }
@@ -51,20 +53,26 @@ void GraphElement::paint(QPainter *painter, const QStyleOptionGraphicsItem *opti
     int k = 0;
     painter->setBrush(Qt::white);
 
-    style.paint(painter);
+    if (type == "pblock")
+    {
+        auto p = std::make_shared<PBlockStyle>(style->getPath());
+        style = std::dynamic_pointer_cast<PBlockStyle>(p);
+    }
 
-    for (auto i = vInPins.begin(); i != vInPins.end(); ++i)
+    style->paint(painter);
+
+    for (auto& i: vInPins)
     {
         k += width/(InputPins + 1);
-        (*i)->setPos(k, 0);
+        i->setPos(k, 0);
     }
 
     k = 0;
 
-    for (auto i = vOutPins.begin(); i != vOutPins.end(); ++i)
+    for (auto& i: vOutPins)
     {
         k += width/(OutputPins + 1);
-        (*i)->setPos(k, height);
+        i->setPos(k, height);
     }
 }
 

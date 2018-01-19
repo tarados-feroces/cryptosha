@@ -13,7 +13,7 @@ GraphLayer::GraphLayer(QGraphicsItem *parent) : QGraphicsItem(parent)
 
 
 
-GraphLayer::GraphLayer(int _x, int _y, Style &_style, QGraphicsItem *parent)
+GraphLayer::GraphLayer(int _x, int _y, stylePtr _style, QGraphicsItem *parent)
     : gX(_x), gY(_y), style(_style), QGraphicsItem(parent)
 {
     setPos(gX, gY);
@@ -26,6 +26,8 @@ GraphLayer::GraphLayer(int _x, int _y, Style &_style, QGraphicsItem *parent)
 
         item->gX = pos().x() + dist_x;
         item->gY = pos().y();
+        if (i % 2 == 0)
+            item->type = "pblock";
         item->setPinsCoords();
         dist_x += item->width * 1.5;
         listElements.push_back(std::move(item));
@@ -38,8 +40,8 @@ GraphLayer::GraphLayer(int _x, int _y, Style &_style, QGraphicsItem *parent)
 void GraphLayer::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     int x = 0;
-    painter->setPen(QPen(Qt::black, 1));
-    painter->setBrush(Qt::black);
+//    painter->setPen(QPen(Qt::black, 5));
+//    painter->setBrush(Qt::black);
     int wid = 0;
     int hei = 0;
 

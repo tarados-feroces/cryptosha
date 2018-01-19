@@ -18,18 +18,18 @@
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-struct qt_meta_stringdata_styleSelect_t {
+struct qt_meta_stringdata_StyleSelect_t {
     QByteArrayData data[6];
     char stringdata0[61];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_styleSelect_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_StyleSelect_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_styleSelect_t qt_meta_stringdata_styleSelect = {
+static const qt_meta_stringdata_StyleSelect_t qt_meta_stringdata_StyleSelect = {
     {
-QT_MOC_LITERAL(0, 0, 11), // "styleSelect"
+QT_MOC_LITERAL(0, 0, 11), // "StyleSelect"
 QT_MOC_LITERAL(1, 12, 6), // "Update"
 QT_MOC_LITERAL(2, 19, 0), // ""
 QT_MOC_LITERAL(3, 20, 14), // "on_Add_clicked"
@@ -37,12 +37,12 @@ QT_MOC_LITERAL(4, 35, 18), // "on_Default_clicked"
 QT_MOC_LITERAL(5, 54, 6) // "accept"
 
     },
-    "styleSelect\0Update\0\0on_Add_clicked\0"
+    "StyleSelect\0Update\0\0on_Add_clicked\0"
     "on_Default_clicked\0accept"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_styleSelect[] = {
+static const uint qt_meta_data_StyleSelect[] = {
 
  // content:
        7,       // revision
@@ -74,10 +74,10 @@ static const uint qt_meta_data_styleSelect[] = {
        0        // eod
 };
 
-void styleSelect::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void StyleSelect::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        styleSelect *_t = static_cast<styleSelect *>(_o);
+        StyleSelect *_t = static_cast<StyleSelect *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->Update(); break;
@@ -90,8 +90,8 @@ void styleSelect::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
         int *result = reinterpret_cast<int *>(_a[0]);
         void **func = reinterpret_cast<void **>(_a[1]);
         {
-            typedef void (styleSelect::*_t)();
-            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&styleSelect::Update)) {
+            typedef void (StyleSelect::*_t)();
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&StyleSelect::Update)) {
                 *result = 0;
             }
         }
@@ -99,26 +99,26 @@ void styleSelect::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id,
     Q_UNUSED(_a);
 }
 
-const QMetaObject styleSelect::staticMetaObject = {
-    { &QDialog::staticMetaObject, qt_meta_stringdata_styleSelect.data,
-      qt_meta_data_styleSelect,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+const QMetaObject StyleSelect::staticMetaObject = {
+    { &QDialog::staticMetaObject, qt_meta_stringdata_StyleSelect.data,
+      qt_meta_data_StyleSelect,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
-const QMetaObject *styleSelect::metaObject() const
+const QMetaObject *StyleSelect::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *styleSelect::qt_metacast(const char *_clname)
+void *StyleSelect::qt_metacast(const char *_clname)
 {
     if (!_clname) return Q_NULLPTR;
-    if (!strcmp(_clname, qt_meta_stringdata_styleSelect.stringdata0))
-        return static_cast<void*>(const_cast< styleSelect*>(this));
+    if (!strcmp(_clname, qt_meta_stringdata_StyleSelect.stringdata0))
+        return static_cast<void*>(const_cast< StyleSelect*>(this));
     return QDialog::qt_metacast(_clname);
 }
 
-int styleSelect::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int StyleSelect::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QDialog::qt_metacall(_c, _id, _a);
     if (_id < 0)
@@ -136,7 +136,7 @@ int styleSelect::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void styleSelect::Update()
+void StyleSelect::Update()
 {
     QMetaObject::activate(this, &staticMetaObject, 0, Q_NULLPTR);
 }

@@ -35,7 +35,8 @@ SOURCES += \
     elements/graphElement.cpp \
     elements/graphLayer.cpp \
     elements/graphPin.cpp \
-    main/styleSelect.cpp
+    main/styleselect.cpp \
+    elements/pblockstyle.cpp
 #    elements/graph_scene.cpp \
 
 
@@ -46,7 +47,9 @@ HEADERS += \
     main/styleselect.h \
     elements/graphElement.h \
     elements/graphLayer.h \
-    elements/graphPin.h
+    elements/graphPin.h \
+    config.h \
+    elements/pblockstyle.h
 #    elements/graph_scene.h \
 
 FORMS += \

@@ -4,7 +4,7 @@
 #include <QGraphicsLayoutItem>
 #include <QPainter>
 
-//#include "../QtCryptosha/cryptosha.hpp"
+
 
 class GraphPin : public QGraphicsItem
 {
@@ -19,11 +19,6 @@ public:
     void setCoords(int, int);
 
     void setNumber(int);
-
-    QPointF getPoint()
-    {
-        return QPointF(gX, gY);
-    }
 
     QRectF boundingRect() const;
 

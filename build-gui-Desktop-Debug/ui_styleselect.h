@@ -21,7 +21,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_styleSelect
+class Ui_StyleSelect
 {
 public:
     QDialogButtonBox *buttonBox;
@@ -29,45 +29,45 @@ public:
     QPushButton *Default;
     QLabel *label;
 
-    void setupUi(QDialog *styleSelect)
+    void setupUi(QDialog *StyleSelect)
     {
-        if (styleSelect->objectName().isEmpty())
-            styleSelect->setObjectName(QStringLiteral("styleSelect"));
-        styleSelect->resize(651, 300);
-        buttonBox = new QDialogButtonBox(styleSelect);
+        if (StyleSelect->objectName().isEmpty())
+            StyleSelect->setObjectName(QStringLiteral("StyleSelect"));
+        StyleSelect->resize(651, 300);
+        buttonBox = new QDialogButtonBox(StyleSelect);
         buttonBox->setObjectName(QStringLiteral("buttonBox"));
         buttonBox->setGeometry(QRect(30, 240, 341, 32));
         buttonBox->setOrientation(Qt::Horizontal);
         buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
-        Add = new QPushButton(styleSelect);
+        Add = new QPushButton(StyleSelect);
         Add->setObjectName(QStringLiteral("Add"));
         Add->setGeometry(QRect(30, 90, 89, 25));
-        Default = new QPushButton(styleSelect);
+        Default = new QPushButton(StyleSelect);
         Default->setObjectName(QStringLiteral("Default"));
         Default->setGeometry(QRect(30, 130, 89, 25));
-        label = new QLabel(styleSelect);
+        label = new QLabel(StyleSelect);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(176, 99, 401, 71));
 
-        retranslateUi(styleSelect);
-        QObject::connect(buttonBox, SIGNAL(accepted()), styleSelect, SLOT(accept()));
-        QObject::connect(buttonBox, SIGNAL(rejected()), styleSelect, SLOT(reject()));
+        retranslateUi(StyleSelect);
+        QObject::connect(buttonBox, SIGNAL(accepted()), StyleSelect, SLOT(accept()));
+        QObject::connect(buttonBox, SIGNAL(rejected()), StyleSelect, SLOT(reject()));
 
-        QMetaObject::connectSlotsByName(styleSelect);
+        QMetaObject::connectSlotsByName(StyleSelect);
     } // setupUi
 
-    void retranslateUi(QDialog *styleSelect)
+    void retranslateUi(QDialog *StyleSelect)
     {
-        styleSelect->setWindowTitle(QApplication::translate("styleSelect", "Dialog", 0));
-        Add->setText(QApplication::translate("styleSelect", "Add", 0));
-        Default->setText(QApplication::translate("styleSelect", "Default", 0));
+        StyleSelect->setWindowTitle(QApplication::translate("StyleSelect", "Dialog", 0));
+        Add->setText(QApplication::translate("StyleSelect", "Add", 0));
+        Default->setText(QApplication::translate("StyleSelect", "Default", 0));
         label->setText(QString());
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class styleSelect: public Ui_styleSelect {};
+    class StyleSelect: public Ui_StyleSelect {};
 } // namespace Ui
 
 QT_END_NAMESPACE

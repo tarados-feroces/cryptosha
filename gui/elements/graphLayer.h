@@ -4,7 +4,6 @@
 #include <QGraphicsItem>
 #include <QWidget>
 #include "graphElement.h"
-#include <QList>
 #include <QPainter>
 
 
@@ -16,7 +15,7 @@ class GraphLayer : public QGraphicsItem
 public:
 
     GraphLayer(QGraphicsItem * parent = 0);
-    GraphLayer(int x, int y, Style &_style, QGraphicsItem *parent = 0);
+    GraphLayer(int x, int y, stylePtr _style, QGraphicsItem *parent = 0);
     GraphLayer(const GraphLayer&) = delete;
     GraphLayer& operator=(const GraphLayer&) = delete;
     ~GraphLayer() = default;
@@ -30,7 +29,7 @@ public:
 
     int gX;
     int gY;
-    Style style;
+    stylePtr style;
 
 };
 

@@ -18,6 +18,13 @@ void Style::changePath(QString _path)
 }
 
 
+
+QString Style::getPath()
+{
+    return this->path;
+}
+
+
 void Style::read()
 {
     QFile data(path);
@@ -28,7 +35,9 @@ void Style::read()
 
     this->width = root["Width"].toInt();
     this->height = root["Height"].toInt();
-
+    auto rgb = root["Color"].toArray();
+    QColor c(rgb[0].toInt(), rgb[1].toInt(), rgb[2].toInt());
+    this->color = c;
     data.close();
 }
 
@@ -44,10 +53,15 @@ int Style::getHeight()
 }
 
 
+
+QColor Style::getColor()
+{
+    return this->color;
+}
+
+
 void Style::paint(QPainter *painter)
 {
-    QColor color;
-    color.setRgb(123,123,123);
     painter->setPen(QPen(color, 2));
     painter->drawRect(0, 0, width, height);
 }

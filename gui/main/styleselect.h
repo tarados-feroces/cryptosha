@@ -3,23 +3,23 @@
 
 #include <QDialog>
 #include <QFileDialog>
-#include "elements/style.h"
+#include "elements/pblockstyle.h"
 
 
 namespace Ui{
-class styleSelect;
+class StyleSelect;
 }
 
 
-class styleSelect : public QDialog
+class StyleSelect : public QDialog
 {
 
     Q_OBJECT
 
 public:
     friend class MainWindow;
-    styleSelect(QWidget *parent = 0);
-    virtual ~styleSelect();
+    StyleSelect(QWidget *parent = 0);
+    virtual ~StyleSelect();
 
 
 public slots:
@@ -32,8 +32,8 @@ signals:
 
 
 private:
-    Ui::styleSelect *ui;
-    Style style;
+    Ui::StyleSelect *ui;
+    stylePtr style;
 
 };
 

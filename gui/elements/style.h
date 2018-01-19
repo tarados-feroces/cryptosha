@@ -5,9 +5,11 @@
 #include <QStyleOptionGraphicsItem>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QJsonArray>
 #include <QFile>
 #include <QDir>
 #include <QCoreApplication>
+#include <memory>
 
 
 class Style
@@ -15,17 +17,21 @@ class Style
 public:
     Style();
     Style(QString _path);
-    ~Style() {}
+    Style(const Style & obj) = default;
+    virtual ~Style() = default;
 
-    void paint(QPainter *painter);
+    virtual void paint(QPainter *painter);
     void read();
     void changePath(QString _path);
     int getWidth();
     int getHeight();
+    QString getPath();
+    QColor getColor();
 
 private:
     int width;
     int height;
+    QColor color;
     QString path;
 };
 

@@ -1,4 +1,3 @@
-//#include "vector_funcs.h"
 
 
 template<class T>
@@ -47,8 +46,4 @@ void funcs::insert(std::vector<T> &vector, int pos, std::vector<T> &insert_vecto
     }
 }
 
-
-//void funcs::lol() {
-//    std::cout << "jope" << std::endl;
-//}
 

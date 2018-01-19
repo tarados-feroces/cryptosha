@@ -72,7 +72,7 @@ namespace cryptosha {
 
 		convertor cmd_creator;
 
-		size_t num = 0;
+		static const size_t num_of_for_additional_blocks = 4;
 
 		size_t mark_number = 0;
 
@@ -83,7 +83,7 @@ namespace cryptosha {
 		std::stack<string_t> input_stack;
 
 		std::ifstream input;
-		
+
 		std::ofstream output;
 	};
 }

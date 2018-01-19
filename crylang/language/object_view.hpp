@@ -42,6 +42,7 @@ namespace cry {
 				return _name;
 			}
 
+		protected:
 			types _type;
 			string_t _name;
 		};

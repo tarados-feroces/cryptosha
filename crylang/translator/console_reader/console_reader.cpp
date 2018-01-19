@@ -1,4 +1,4 @@
-#include "Reader.h"
+#include "console_reader.h"
 
 
 namespace output {
@@ -18,7 +18,6 @@ namespace cryptosha {
 
 
 	void console_reader::stack_close() {
-		--num;
 		if (ns_stack.empty()) {
 			output << output::err_str << std::endl;
 			return;
@@ -90,7 +89,7 @@ namespace cryptosha {
 		stack_elem st_el;
 
 		if (std::regex_search(input_str, res, m_for)) {
-			++num;
+
 			ns_stack.push(st_el);
 			ns_stack.top().keyword = stack_kw::m_for;
 
@@ -109,19 +108,17 @@ namespace cryptosha {
             code_element.keyword = keywords::expression;
             code_element.parameters = simple_cmd_handle(res[3].str());
             ns_stack.top().simple_command_list.push_back(code_element);
-			ns_stack.top().position = 3;
+			ns_stack.top().position = num_of_for_additional_blocks - 1;
 
 			code_element.mark = mark_number++;
 			code_element.keyword = keywords::jump;
-			code_element.parameters = mark_number - 4;  // Изменить, если меняется кол-во блоков в for
+			code_element.parameters = mark_number - num_of_for_additional_blocks;
 			ns_stack.top().simple_command_list.push_back(code_element);
 
 			return;
 		}
 
 		else if (input_str == syntax::block_open_scope) {
-			//ind = false;
-			++num;
             st_el.keyword = stack_kw::open_scope;
             st_el.position = 0;
 			ns_stack.push(st_el);

@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+crylang/translator/cmake-build-debug
+crylang/old
+crylang/translator/.idea

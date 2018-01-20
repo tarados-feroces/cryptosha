@@ -184,7 +184,7 @@ namespace cryptosha {
 
 	code::code_type console_reader::read() {
 
-		std::vector<string_t> dividers{syntax::block_open_scope, syntax::block_open_scope};
+		std::vector<string_t> dividers{syntax::block_open_scope, syntax::block_close_scope};
 
 		do {
             string_t str = funcs::space_free(input_handle());

@@ -34,3 +34,6 @@
 crylang/translator/cmake-build-debug
 crylang/old
 crylang/translator/.idea
+
+.idea
+cmake-build-debug

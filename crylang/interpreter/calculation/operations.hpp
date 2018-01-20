@@ -1,6 +1,7 @@
 #pragma once
 
 #include "variables.h"
+#include "types.hpp"
 
 #include <functional>
 
@@ -88,7 +89,7 @@ namespace crylang {
         {
             object operator( arguments )
             {
-                
+
             }
 
         };

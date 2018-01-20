@@ -9,7 +9,7 @@ namespace cry {
 
 		enum class keywords {
 			expression,      ///< math expression
-			function,        ///< function definition
+			//function,        ///< function definition
 			condition,       ///< for branching
 			jump,            ///< for jumping to another command
 			empty            ///< command-stub

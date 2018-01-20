@@ -56,7 +56,7 @@ expression_t convertor::handle() {
                 continue;
             }
 
-            while(stack_op.top().second >= it->second && !stack_op.empty()) {
+            while(!stack_op.empty() && stack_op.top().second >= it->second) {
                 output.push_back(op_to_obj.find(stack_op.top().first)->second);
                 stack_op.pop();
             }
@@ -69,6 +69,7 @@ expression_t convertor::handle() {
         }
 
         else if(string == syntax::close_scope) {
+
             if(stack_op.empty())
                 throw exception_t("wrong sequense");
 
@@ -90,7 +91,8 @@ expression_t convertor::handle() {
             --scope_counter;
         }
 
-        else if(string == ",") {
+        else if(string == syntax::divider) {
+
             if(stack_op.empty())
                 throw exception_t("wrong sequense");
 
@@ -101,7 +103,8 @@ expression_t convertor::handle() {
                 stack_op.pop();
             }
 
-            stack_num_args.top()++;
+            if(!stack_num_args.empty())
+                stack_num_args.top()++;
         }
 
         else if(string != ""){

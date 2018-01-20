@@ -40,6 +40,8 @@ namespace cryptosha {
 		std::vector<string_t> list{};
 		std::vector<string_t> dividers{syntax::open_scope, syntax::close_scope};
 		do {
+            if(input.eof())
+                throw std::invalid_argument("wrong sequence");
 			getline(input, str);
 			list = funcs::multiple_parse(str, dividers);
 			str.clear();
@@ -52,8 +54,7 @@ namespace cryptosha {
 				}
 				else if (it == syntax::close_scope) {
 				if (input_stack.empty()) {
-					output << output::err_str << std::endl;
-					return string_t("");
+                    throw std::invalid_argument("wrong sequence");
 				}
 				else {
 					input_stack.pop();
@@ -176,21 +177,12 @@ namespace cryptosha {
 
 	code::code_type console_reader::read() {
 
-		string_t str = input_handle();
-		funcs::space_free(str);
 		std::vector<string_t> dividers{syntax::block_open_scope, syntax::block_open_scope};
 
-		list_handle(funcs::multiple_parse(str, dividers));
-
-		while (!ns_stack.empty()) {
-			string_t str = input_handle();
-			str = funcs::space_free(str);
-
+		do {
+            string_t str = funcs::space_free(input_handle());
 			list_handle(funcs::multiple_parse(str, dividers));
-
-
-
-		}
+		} while (!ns_stack.empty());
 
 		code::code_type result = code;
 		code.clear();

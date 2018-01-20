@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../includes.hpp"
-#include "../funcs/string_funcs.h"
-#include "../syntax_constants.hpp"
+#include "includes.hpp"
+#include "string_funcs.h"
+#include "syntax_constants.hpp"
 
 #include <iostream>
 #include <stack>

@@ -1,14 +1,14 @@
 #pragma once
 
-#include "../includes.hpp"
+#include "includes.hpp"
 #include <iostream>
 #include <stack>
 #include <vector>
 #include <regex>
 #include <fstream>
 
-#include "../convertor/convertor.h"
-#include "../regs.hpp"
+#include "convertor.h"
+#include "regs.hpp"
 
 
 using namespace cry;

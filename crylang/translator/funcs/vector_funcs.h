@@ -1,7 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include "../includes.hpp"
+#include "includes.hpp"
 
 
 namespace funcs{

@@ -8,7 +8,14 @@ TEST_CASE( "Testing objects" )
 {
     using namespace crylang;
 
-    SECTION( "Easy types" )
+    SECTION( "Type: nothing" )
+    {
+        object none = make_object();
+
+        REQUIRE( none.get_type() == type::Nothing );
+    }
+
+    SECTION( "Simple types" )
     {
         int_t var = 42;
         object int_var = make_object( var );
@@ -35,5 +42,22 @@ TEST_CASE( "Testing objects" )
 
         object str_3 = make_object( std::string("lol") );
         REQUIRE( str_3.get_type() == type::String );
+    }
+
+    SECTION( "Testing get<>() method" )
+    {
+        object str = make_object( std::string("STRING") );
+        REQUIRE( str.get_type() == type::String );
+        REQUIRE( str.get<cry::string_t>() == "STRING" );
+        REQUIRE( str.get<3>() == "STRING" );
+        REQUIRE( str.get_type_index() == 3 );
+
+
+        object short_var = make_object( short(-3) );
+        REQUIRE( short_var.get_type() == type::Int );
+        REQUIRE( short_var.get_type_index() == 1 );
+        REQUIRE( short_var.get<1>() + 3 ==0 );
+
+
     }
 }

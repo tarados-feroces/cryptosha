@@ -8,7 +8,6 @@
 #include <stack>
 #include <map>
 #include <vector>
-//#include "../vector_funcs.hpp"
 
 using namespace cry;
 using namespace cry::lang;

@@ -56,6 +56,9 @@ namespace cryptosha {
 		void cmd_make(string_t);
 
 
+        void handle_for(std::smatch&, command_type&);
+
+
 		void stack_close();
 
 

@@ -79,6 +79,42 @@ namespace cryptosha {
 	}
 
 
+	void console_reader::handle_for(std::smatch& res, command_type& code_element) {
+
+		code_element.mark = mark_number++;
+		code_element.keyword = keywords::expression;
+		code_element.parameters = simple_cmd_handle(res[1].str());
+		ns_stack.top().simple_command_list.push_back(code_element);
+
+		code_element.mark = mark_number++;
+		code_element.keyword = keywords::condition;
+		code_element.parameters = mark_number;
+		code_element.parameters = simple_cmd_handle(res[2].str());
+		ns_stack.top().simple_command_list.push_back(code_element);
+
+		code_element.mark = mark_number++;
+		code_element.keyword = keywords::jump;
+		code_element.parameters = mark_number + num_of_for_blocks_after_ins - 1;
+		ns_stack.top().simple_command_list.push_back(code_element);
+
+		code_element.mark = mark_number++;
+		code_element.keyword = keywords::expression;
+		code_element.parameters = simple_cmd_handle(res[3].str());
+		ns_stack.top().simple_command_list.push_back(code_element);
+		ns_stack.top().position = num_of_for_blocks_before_ins;
+
+		code_element.mark = mark_number++;
+		code_element.keyword = keywords::jump;
+		code_element.parameters = mark_number - num_of_for_blocks_before_ins - num_of_for_blocks_after_ins + 2;
+		ns_stack.top().simple_command_list.push_back(code_element);
+
+		code_element.mark = mark_number++;
+		code_element.keyword = keywords::empty;
+		ns_stack.top().simple_command_list.push_back(code_element);
+
+	}
+
+
 	void console_reader::cmd_make(string_t input_str) {
 
 		if (!input_str.size())
@@ -93,36 +129,7 @@ namespace cryptosha {
 			ns_stack.push(st_el);
 			ns_stack.top().keyword = stack_kw::m_for;
 
-			code_element.mark = mark_number++;
-			code_element.keyword = keywords::expression;
-			code_element.parameters = simple_cmd_handle(res[1].str());
-			ns_stack.top().simple_command_list.push_back(code_element);
-
-			code_element.mark = mark_number++;
-			code_element.keyword = keywords::condition;
-			code_element.parameters = mark_number;
-			code_element.parameters = simple_cmd_handle(res[2].str());
-			ns_stack.top().simple_command_list.push_back(code_element);
-
-			code_element.mark = mark_number++;
-			code_element.keyword = keywords::jump;
-			code_element.parameters = mark_number + num_of_for_blocks_after_ins - 1;
-			ns_stack.top().simple_command_list.push_back(code_element);
-
-			code_element.mark = mark_number++;
-			code_element.keyword = keywords::expression;
-			code_element.parameters = simple_cmd_handle(res[3].str());
-			ns_stack.top().simple_command_list.push_back(code_element);
-			ns_stack.top().position = num_of_for_blocks_before_ins;
-
-			code_element.mark = mark_number++;
-			code_element.keyword = keywords::jump;
-			code_element.parameters = mark_number - num_of_for_blocks_before_ins - num_of_for_blocks_after_ins + 2;
-			ns_stack.top().simple_command_list.push_back(code_element);
-
-			code_element.mark = mark_number++;
-			code_element.keyword = keywords::empty;
-			ns_stack.top().simple_command_list.push_back(code_element);
+			handle_for(res, code_element);
 
 			return;
 		}

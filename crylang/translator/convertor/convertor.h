@@ -3,6 +3,7 @@
 #include "includes.hpp"
 #include "string_funcs.h"
 #include "syntax_constants.hpp"
+#include "operations.h"
 
 #include <iostream>
 #include <stack>
@@ -47,36 +48,6 @@ private:
 
     size_t max_length_of_operator = 2;
 
-    map_t operations = {
-            {"=", 0},
-            {"<-", 0},
-            {"<->", 0},
-            {"!=", 1},
-            {"==", 1},
-            {">", 1},
-            {"<", 1},
-            {"+", 2},
-            {"-", 2},
-            {"/", 3},
-            {"%", 3},
-            {"*", 3},
-            {"^", 4},
-    };
+    operations opers;
 
-    std::map<string_t, object_view> op_to_obj = {
-            {"=", operators::assign_copy},
-            {"<-", operators::assign_move},
-            {"<->", operators::swap},
-            {"!=", operators::not_equal},
-            {"==", operators::equal},
-            {">", operators::greater},
-            {"<", operators::less},
-            {"+", operators::plus},
-            {"-", operators::minus},
-            {"/", operators::div},
-            {"%", operators::mod},
-            {"*", operators::mult},
-            {"^", operators::degree},
-            {".", operators::class_member},
-    };
 };

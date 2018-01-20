@@ -1,11 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "scheme.h"
+
 #include <QTextEdit>
 
 
-
-QString newName = QDir::currentPath() + "/untitled.cry";
 
 
 
@@ -151,7 +149,7 @@ void MainWindow::showNewMenu()
     if (!this->fileSaved)
         this->showSaveMenu();
 
-    QString filename = newName;
+    QString filename = gui::newName;
     this->filename = filename;
 
     ui->textEdit->setText(QString());

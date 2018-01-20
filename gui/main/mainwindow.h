@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -7,7 +9,8 @@
 #include <QMenuBar>
 #include <QDir>
 #include <QAction>
-#include <memory>
+
+#include "scheme.h"
 #include "styleselect.h"
 
 

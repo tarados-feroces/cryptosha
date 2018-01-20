@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef SCHEME_H
 #define SCHEME_H
 

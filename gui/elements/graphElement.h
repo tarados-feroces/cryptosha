@@ -1,21 +1,20 @@
+#pragma once
+
 #ifndef GRAPH_ELEMENT_H
 #define GRAPH_ELEMENT_H
-#include <QGraphicsItem>
-#include <QGraphicsLayoutItem>
-#include <QPainter>
+
+
 #include <QVector>
 #include <QGraphicsSceneMouseEvent>
 #include <QDebug>
 #include <QCursor>
 #include <QObject>
-#include <memory>
 
 #include "graphPin.h"
 #include "pblockstyle.h"
 
-using gPinPtr = std::unique_ptr<GraphPin>;
 
-
+using     gPinPtr = std::unique_ptr<GraphPin>;
 
 
 class GraphElement : public QObject, public QGraphicsItem

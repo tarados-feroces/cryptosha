@@ -1,16 +1,11 @@
 #include "pblockstyle.h"
 
-PBlockStyle::PBlockStyle() : Style()
-{
 
-}
+PBlockStyle::PBlockStyle() : Style() {}
 
 
 
-PBlockStyle::PBlockStyle(QString _path) : Style(_path)
-{
-
-}
+PBlockStyle::PBlockStyle(QString _path) : Style(_path) {}
 
 
 

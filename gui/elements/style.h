@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef STYLE_H
 #define STYLE_H
 
@@ -7,9 +9,11 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QFile>
-#include <QDir>
 #include <QCoreApplication>
 #include <memory>
+
+#include "../settings.hpp"
+
 
 
 class Style

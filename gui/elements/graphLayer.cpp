@@ -1,5 +1,5 @@
 #include "graphLayer.h"
-#include <QDebug>
+
 
 
 GraphLayer::GraphLayer(QGraphicsItem *parent) : QGraphicsItem(parent)

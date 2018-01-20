@@ -1,10 +1,13 @@
+#pragma once
+
 #ifndef LAY_H
 #define LAY_H
 
 #include <QGraphicsItem>
 #include <QWidget>
-#include "graphElement.h"
 #include <QPainter>
+
+#include "graphElement.h"
 
 
 using gElementPtr = std::unique_ptr<GraphElement>;

@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef PBLOCKSTYLE_H
 #define PBLOCKSTYLE_H
 

@@ -1,9 +1,5 @@
 #include "graphElement.h"
-#include "graphPin.h"
-#include <QPainter>
-#include <QDebug>
-#include <QGradient>
-#include <QGraphicsLinearLayout>
+
 
 
 GraphElement::GraphElement(QGraphicsItem *parent)

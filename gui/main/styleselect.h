@@ -1,9 +1,14 @@
+#pragma once
+
 #ifndef STYLESELECT_H
 #define STYLESELECT_H
 
 #include <QDialog>
 #include <QFileDialog>
 #include "elements/pblockstyle.h"
+
+
+
 
 
 namespace Ui{
@@ -19,7 +24,7 @@ class StyleSelect : public QDialog
 public:
     friend class MainWindow;
     StyleSelect(QWidget *parent = 0);
-    virtual ~StyleSelect();
+    virtual ~StyleSelect() = default;
 
 
 public slots:

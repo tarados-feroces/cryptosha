@@ -1,5 +1,6 @@
 #include "graphPin.h"
-#include <QDebug>
+
+
 
 GraphPin::GraphPin(QGraphicsItem *parent) : QGraphicsItem(parent)
 {

@@ -1,8 +1,12 @@
+#pragma once
+
 #ifndef GRAPH_PIN_H
 #define GRAPH_PIN_H
+
 #include <QGraphicsItem>
-#include <QGraphicsLayoutItem>
 #include <QPainter>
+
+
 
 
 

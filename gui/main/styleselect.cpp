@@ -19,7 +19,7 @@ void StyleSelect::on_Add_clicked()
 
 void StyleSelect::on_Default_clicked()
 {
-    QString filename = QDir::currentPath() + "/gui/styles/DefaultStyle.json";
+    QString filename = gui::defaultStylePath;
     ui->label->setText(filename);
     style = std::move(std::make_shared<Style>(filename));
 }
@@ -30,11 +30,4 @@ void StyleSelect::accept()
 {
     emit Update();
     this->close();
-}
-
-
-
-StyleSelect::~StyleSelect()
-{
-    delete ui;
 }

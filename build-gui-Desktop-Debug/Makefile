@@ -142,8 +142,8 @@ DIST          = ../gui/main/test.json \
 		../gui/elements/graphElement.h \
 		../gui/elements/graphLayer.h \
 		../gui/elements/graphPin.h \
-		../gui/config.h \
-		../gui/elements/pblockstyle.h ../gui/main/main.cpp \
+		../gui/elements/pblockstyle.h \
+		../gui/settings.hpp ../gui/main/main.cpp \
 		../gui/main/mainwindow.cpp \
 		../gui/main/scheme.cpp \
 		../gui/elements/style.cpp \
@@ -323,7 +323,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../gui/main/mainwindow.h ../gui/main/scheme.h ../gui/elements/style.h ../gui/main/styleselect.h ../gui/elements/graphElement.h ../gui/elements/graphLayer.h ../gui/elements/graphPin.h ../gui/config.h ../gui/elements/pblockstyle.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../gui/main/mainwindow.h ../gui/main/scheme.h ../gui/elements/style.h ../gui/main/styleselect.h ../gui/elements/graphElement.h ../gui/elements/graphLayer.h ../gui/elements/graphPin.h ../gui/elements/pblockstyle.h ../gui/settings.hpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../gui/main/main.cpp ../gui/main/mainwindow.cpp ../gui/main/scheme.cpp ../gui/elements/style.cpp ../gui/elements/graphElement.cpp ../gui/elements/graphLayer.cpp ../gui/elements/graphPin.cpp ../gui/main/styleselect.cpp ../gui/elements/pblockstyle.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../gui/user_interface/mainwindow.ui ../gui/user_interface/scheme.ui ../gui/user_interface/styleselect.ui $(DISTDIR)/
 
@@ -351,22 +351,30 @@ compiler_rcc_clean:
 compiler_moc_header_make_all: moc_mainwindow.cpp moc_scheme.cpp moc_styleselect.cpp moc_graphElement.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) moc_mainwindow.cpp moc_scheme.cpp moc_styleselect.cpp moc_graphElement.cpp
-moc_mainwindow.cpp: ../gui/main/styleselect.h \
+moc_mainwindow.cpp: ../gui/main/scheme.h \
+		../gui/elements/pblockstyle.h \
 		../gui/elements/style.h \
+		../gui/settings.hpp \
+		../gui/main/styleselect.h \
 		../gui/main/mainwindow.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/danchetto/projects/cryptosha/gui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../gui/main/mainwindow.h -o moc_mainwindow.cpp
 
-moc_scheme.cpp: ../gui/elements/style.h \
+moc_scheme.cpp: ../gui/elements/pblockstyle.h \
+		../gui/elements/style.h \
+		../gui/settings.hpp \
 		../gui/main/scheme.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/danchetto/projects/cryptosha/gui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../gui/main/scheme.h -o moc_scheme.cpp
 
-moc_styleselect.cpp: ../gui/elements/style.h \
+moc_styleselect.cpp: ../gui/elements/pblockstyle.h \
+		../gui/elements/style.h \
+		../gui/settings.hpp \
 		../gui/main/styleselect.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/danchetto/projects/cryptosha/gui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../gui/main/styleselect.h -o moc_styleselect.cpp
 
 moc_graphElement.cpp: ../gui/elements/graphPin.h \
 		../gui/elements/pblockstyle.h \
 		../gui/elements/style.h \
+		../gui/settings.hpp \
 		../gui/elements/graphElement.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/danchetto/projects/cryptosha/gui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../gui/elements/graphElement.h -o moc_graphElement.cpp
 
@@ -395,53 +403,64 @@ compiler_clean: compiler_moc_header_clean compiler_uic_clean
 ####### Compile
 
 main.o: ../gui/main/main.cpp ../gui/main/mainwindow.h \
-		../gui/main/styleselect.h \
+		../gui/main/scheme.h \
+		../gui/elements/pblockstyle.h \
 		../gui/elements/style.h \
-		../gui/elements/graphPin.h
+		../gui/settings.hpp \
+		../gui/main/styleselect.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../gui/main/main.cpp
 
 mainwindow.o: ../gui/main/mainwindow.cpp ../gui/main/mainwindow.h \
-		../gui/main/styleselect.h \
+		../gui/main/scheme.h \
+		../gui/elements/pblockstyle.h \
 		../gui/elements/style.h \
-		ui_mainwindow.h \
-		../gui/main/scheme.h
+		../gui/settings.hpp \
+		../gui/main/styleselect.h \
+		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../gui/main/mainwindow.cpp
 
 scheme.o: ../gui/main/scheme.cpp ../gui/main/scheme.h \
+		../gui/elements/pblockstyle.h \
 		../gui/elements/style.h \
-		ui_scheme.h \
+		../gui/settings.hpp \
 		../gui/elements/graphLayer.h \
 		../gui/elements/graphElement.h \
 		../gui/elements/graphPin.h \
-		../gui/elements/pblockstyle.h
+		ui_scheme.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o scheme.o ../gui/main/scheme.cpp
 
-style.o: ../gui/elements/style.cpp ../gui/elements/style.h
+style.o: ../gui/elements/style.cpp ../gui/elements/style.h \
+		../gui/settings.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o style.o ../gui/elements/style.cpp
 
 graphElement.o: ../gui/elements/graphElement.cpp ../gui/elements/graphElement.h \
 		../gui/elements/graphPin.h \
 		../gui/elements/pblockstyle.h \
-		../gui/elements/style.h
+		../gui/elements/style.h \
+		../gui/settings.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o graphElement.o ../gui/elements/graphElement.cpp
 
 graphLayer.o: ../gui/elements/graphLayer.cpp ../gui/elements/graphLayer.h \
 		../gui/elements/graphElement.h \
 		../gui/elements/graphPin.h \
 		../gui/elements/pblockstyle.h \
-		../gui/elements/style.h
+		../gui/elements/style.h \
+		../gui/settings.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o graphLayer.o ../gui/elements/graphLayer.cpp
 
 graphPin.o: ../gui/elements/graphPin.cpp ../gui/elements/graphPin.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o graphPin.o ../gui/elements/graphPin.cpp
 
 styleselect.o: ../gui/main/styleselect.cpp ../gui/main/styleselect.h \
+		../gui/elements/pblockstyle.h \
 		../gui/elements/style.h \
+		../gui/settings.hpp \
 		ui_styleselect.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o styleselect.o ../gui/main/styleselect.cpp
 
 pblockstyle.o: ../gui/elements/pblockstyle.cpp ../gui/elements/pblockstyle.h \
-		../gui/elements/style.h
+		../gui/elements/style.h \
+		../gui/settings.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o pblockstyle.o ../gui/elements/pblockstyle.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 

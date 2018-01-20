@@ -29,7 +29,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main/main.cpp \
         main/mainwindow.cpp \
-#        elements/graph_scene.cpp \
     main/scheme.cpp \
     elements/style.cpp \
     elements/graphElement.cpp \
@@ -37,7 +36,6 @@ SOURCES += \
     elements/graphPin.cpp \
     main/styleselect.cpp \
     elements/pblockstyle.cpp
-#    elements/graph_scene.cpp \
 
 
 HEADERS += \
@@ -48,9 +46,9 @@ HEADERS += \
     elements/graphElement.h \
     elements/graphLayer.h \
     elements/graphPin.h \
-    config.h \
-    elements/pblockstyle.h
-#    elements/graph_scene.h \
+    elements/pblockstyle.h \
+    settings.hpp
+
 
 FORMS += \
         user_interface/mainwindow.ui \

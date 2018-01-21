@@ -38,16 +38,16 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(1017, 638);
+        MainWindow->resize(1017, 659);
         MainWindow->setIconSize(QSize(24, 24));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         runButton = new QPushButton(centralWidget);
         runButton->setObjectName(QStringLiteral("runButton"));
-        runButton->setGeometry(QRect(550, 90, 89, 25));
+        runButton->setGeometry(QRect(870, 530, 121, 51));
         textEdit = new QTextEdit(centralWidget);
         textEdit->setObjectName(QStringLiteral("textEdit"));
-        textEdit->setGeometry(QRect(60, 69, 431, 471));
+        textEdit->setGeometry(QRect(20, 29, 831, 551));
         textEdit->viewport()->setProperty("cursor", QVariant(QCursor(Qt::IBeamCursor)));
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);

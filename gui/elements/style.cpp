@@ -1,8 +1,9 @@
 #include "style.h"
+//#include <QDir>
 
 
 
-Style::Style() : path(gui::defaultStylePath)
+Style::Style() : path(gui::defaultStylePath)//QDir::currentPath() + "/gui/styles/DefaultStyle.json")
 {
     read();
 }

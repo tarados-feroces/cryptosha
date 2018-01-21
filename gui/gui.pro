@@ -35,7 +35,8 @@ SOURCES += \
     elements/graphLayer.cpp \
     elements/graphPin.cpp \
     main/styleselect.cpp \
-    elements/pblockstyle.cpp
+    elements/pblockstyle.cpp \
+    settings.cpp
 
 
 HEADERS += \

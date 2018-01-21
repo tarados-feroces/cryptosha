@@ -10,8 +10,8 @@
 
 namespace gui {
 
-    QString defaultStylePath = QDir::currentPath() + "/gui/styles/DefaultStyle.json";
-    QString newName = QDir::currentPath() + "/untitled.cry";
+    extern QString defaultStylePath; // = QDir::currentPath() + "/gui/styles/DefaultStyle.json";
+    extern QString newName; // = QDir::currentPath() + "/untitled.cry";
 }
 
 #endif // SETTINGS_H

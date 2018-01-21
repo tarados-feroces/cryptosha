@@ -75,18 +75,6 @@ void MainWindow::createSettingsMenu()
 void MainWindow::showSaveMenu()
 {
 
-//    if (this->filename.size() == 0)
-//    {
-//        QString path = QFileDialog::getSaveFileName(this, tr("Save Document"), QDir::currentPath() + "/" +
-//                                                        this->filename, tr("Cryptosha (*.cry)") );
-
-//        if (path.split('.')[path.split('.').size() - 1] != "cry")
-//            path += ".cry";
-
-//        this->filename = path;
-//    }
-
-
     if (this->filename.size() != 0)
     {
         QFile file(filename);

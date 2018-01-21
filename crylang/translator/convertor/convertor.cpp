@@ -3,17 +3,7 @@
 
 convertor::convertor(){
 
-    size_t k = max_length_of_operator;
-
-    while(k != 0) {
-
-        for (auto &operation : opers.op_to_prior) {
-            if (operation.first.size() == k)
-                dividers.push_back(operation.first);
-        }
-
-        --k;
-    }
+    dividers = ops_handler.ops.get_names();
 
     dividers.push_back(syntax::open_scope);
     dividers.push_back(syntax::close_scope);
@@ -51,7 +41,7 @@ expression_t convertor::handle() {
         auto string = parsed_string[i];
 
 
-        if(!string.empty() && !opers.handle_operation(output, string)) {
+        if(!string.empty() && !ops_handler.handle_operation(output, string)) {
 
             if(i < parsed_string.size() - 1 && parsed_string[i + 1] == syntax::open_scope) { // Если встретили функцию
                 stack_num_args.push(0);
@@ -85,7 +75,7 @@ expression_t convertor::handle() {
 
     }
 
-    opers.close_stack(output);
+    ops_handler.close_stack(output);
 
     return output;
 }
@@ -109,7 +99,7 @@ void convertor::structure_handle(expression_t& output, string_t& input_str) {
         }
 
         if(dots_counter > 0 && args_counter == 2) {
-            output.push_back(opers.op_to_obj.find(syntax::class_member)->second);
+            output.push_back(operators::class_member);
             --dots_counter;
             --args_counter;
         }

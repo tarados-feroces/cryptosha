@@ -1,9 +1,7 @@
 #pragma once
 
-#include "includes.hpp"
-#include "string_funcs.h"
-#include "syntax_constants.hpp"
-#include "operations.h"
+
+#include "operations_handler.h"
 
 #include <iostream>
 #include <stack>
@@ -20,7 +18,7 @@ public:
     explicit convertor();
 
 
-    convertor(string_t input_str) : str(input_str) {}
+    explicit convertor(string_t input_str) : str(input_str) {}
 
 
     void change_str(string_t input_str);
@@ -48,6 +46,6 @@ private:
 
     size_t max_length_of_operator = 2;
 
-    operations opers;
+    operations_handler ops_handler;
 
 };

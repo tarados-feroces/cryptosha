@@ -29,7 +29,7 @@ namespace funcs {
         for (auto& divider : dividers) {
             for (long long int i = vec.size() - 1; i >= 0; --i) {
 
-                if(find(dividers, vec[i]))
+                if(find(dividers, vec[i]) != dividers.end())
                     continue;
 
                 auto parsed_string = parse(vec[i], divider);
@@ -53,6 +53,23 @@ namespace funcs {
                 ++it;
         }
         return input_str;
+    }
+
+
+    bool equal(string_t lhs, string_t rhs) {
+
+        if(lhs.size() != rhs.size())
+            return false;
+
+        for(auto it1 = lhs.begin(), it2 = rhs.begin();
+            it1 != lhs.end() && it2 != rhs.end();
+            ++it1, ++it2) {
+
+            if(*it1 != *it2)
+                return false;
+        }
+
+        return true;
     }
 
 }

@@ -1,7 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include "includes.hpp"
+#include "../includes.hpp"
 
 
 namespace funcs{
@@ -16,8 +16,8 @@ namespace funcs{
     template <class T>
     void insert(std::vector<T>& vector, size_t pos, std::vector<T>& insert_vector);
 
-    template <class T>
-    bool find(std::vector<T>& vector, T element);
+    template <class T, class L>
+    auto find(std::vector<T>& vector, L element);
 
 }
 

@@ -33,9 +33,7 @@ namespace cry {
                 def_operation(less);
                 def_operation(greater);
 
-        
-
-
+                def_operation(empty);
 
 
             #undef def_operation

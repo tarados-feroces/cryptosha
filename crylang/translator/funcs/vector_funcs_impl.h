@@ -53,15 +53,16 @@ void funcs::insert(std::vector<T>& vector, size_t pos, std::vector<T>& insert_ve
 }
 
 
-template <class T>
-bool funcs::find(std::vector<T>& vector, T element){
+template <class T, class L>
+auto funcs::find(std::vector<T>& vector, L element){
 
-    for(auto& it : vector) {
-        if(it == element)
-            return true;
+    auto it = vector.begin();
+    for(; it != vector.end(); ++it) {
+        if(*it == element)
+            return it;
     }
 
-    return false;
+    return it;
 }
 
 

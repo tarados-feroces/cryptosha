@@ -1,7 +1,6 @@
 #pragma once
 
-#include "includes.hpp"
-#include "language/code.hpp"
+#include "../includes.hpp"
 #include "vector_funcs.h"
 
 using namespace cry;
@@ -15,5 +14,8 @@ namespace funcs{
 
 
     string_t space_free(string_t input_str) ;
+
+
+    bool equal(string_t lhs, string_t rhs);
 
 }

@@ -18,7 +18,6 @@ namespace cry {
 
 		struct command_type
         	{
-		
 			size_t mark;
 			keywords keyword;
 			parameters_t parameters;

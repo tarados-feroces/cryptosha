@@ -1,17 +1,10 @@
 {
-for(h == 5; i < 7; i = i + 1)
-    g = h
 
+a = g + d
+f.sin(k+b, l)
 {
-for(k.i = 1; i < 7; i = i + 1){
-    k = m
-    for(v = 2; v < 8; v = v + 1)
-        l + o
-    }
-
-for(i = 1; i < 7; i = i + 1)
-     k1 = m1
-
+h = k
+a.f(x)
 }
 }
 

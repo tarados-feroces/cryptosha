@@ -29,7 +29,7 @@ bool operations_handler::handle_operator(expression_t &output, string_t input) {
         return false;
 
     while(!stack_op.empty() && stack_op.top().prior() >= it->prior()) {
-        output.push_back(it->object());
+        output.push_back(stack_op.top().object());
         stack_op.pop();
     }
     stack_op.push(*it);

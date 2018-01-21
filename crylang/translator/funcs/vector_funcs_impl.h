@@ -66,3 +66,9 @@ auto funcs::find(std::vector<T>& vector, L element){
 }
 
 
+
+
+
+
+
+

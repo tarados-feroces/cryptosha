@@ -9,6 +9,7 @@
 
 #include "convertor.h"
 #include "regs.hpp"
+#include "handler.hpp"
 
 
 using namespace cry;
@@ -36,7 +37,7 @@ namespace cryptosha {
 	public:
 		console_reader(const string_t& in_name,
 					   const string_t& out_name)
-			: input(in_name), output(out_name) {}
+			: input(in_name), output(out_name), cmd_creator(handler::handler){}
 
 
 		void set_input(const string_t& in_name);

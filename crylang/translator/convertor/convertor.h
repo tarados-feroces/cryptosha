@@ -15,10 +15,7 @@ using namespace cry::code;
 class convertor{
 
 public:
-    explicit convertor();
-
-
-    explicit convertor(string_t input_str) : str(input_str), ops_handler(syntax::lol) {}
+    explicit convertor(operations_handler& handler);
 
 
     void change_str(string_t input_str);

@@ -1,7 +1,7 @@
 #include "convertor.h"
 
 
-convertor::convertor() : ops_handler(syntax::lol){
+convertor::convertor(operations_handler& handler) : ops_handler(handler) {
 
     dividers = ops_handler.ops.get_names();
 

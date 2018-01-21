@@ -11,23 +11,23 @@ GraphLayer::GraphLayer(int _x, int _y, stylePtr _style, QGraphicsItem *parent)
 {
     setPos(gX, gY);
     setFlag(GraphicsItemFlag::ItemIsSelectable);
-    int dist_x = 0;
+//    int dist_x = 0;
 
-    for (int i = 0; i < 2; ++i)
-    {
-        int inputPins = 2;
-        int outputPins = 1;
+//    for (int i = 0; i < 2; ++i)
+//    {
+//        int inputPins = 2;
+//        int outputPins = 1;
 
-        gElementPtr item = std::make_unique<GraphElement>(inputPins, outputPins, style, this);
+//        gElementPtr item = std::make_unique<GraphElement>(inputPins, outputPins, style, this);
 
-        item->gX = pos().x() + dist_x;
-        item->gY = pos().y();
-        if (i % 2 == 0)
-            item->type = "pblock";
-        item->setPinsCoords();
-        dist_x += item->width * 1.5;
-        listElements.push_back(std::move(item));
-    }
+//        item->gX = pos().x() + dist_x;
+//        item->gY = pos().y();
+//        if (i % 2 == 0)
+//            item->type = "pblock";
+//        item->setPinsCoords();
+//        dist_x += item->width * 1.5;
+//        listElements.push_back(std::move(item));
+//    }
 }
 
 

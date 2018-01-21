@@ -24,6 +24,8 @@ public:
 
     void setNumber(int);
 
+    QPointF getPoint();
+
     QRectF boundingRect() const;
 
 	void mousePressEvent(QGraphicsSceneMouseEvent *event);

@@ -168,6 +168,9 @@ void MainWindow::on_runButton_clicked()
     Scheme * dialog = new Scheme(style, this);
     dialog->setWindowTitle(this->filename);
     dialog->show();
+    dialog->draw();
+
+
 
 }
 

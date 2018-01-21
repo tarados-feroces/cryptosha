@@ -5,6 +5,7 @@
 
 #include <QDialog>
 #include "elements/pblockstyle.h"
+#include "elements/graphLayer.h"
 
 
 namespace Ui{
@@ -21,9 +22,12 @@ public:
     Scheme(const Scheme &) = delete;
     virtual ~Scheme();
 
+    void draw();
+
 private:
     Ui::Scheme *ui;
     stylePtr style;
+    std::map<int, GraphElement*> elements;
 };
 
 #endif // SCHEME_H

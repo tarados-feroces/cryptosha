@@ -17,6 +17,13 @@ GraphPin::GraphPin(int val, QGraphicsItem *parent) : QGraphicsItem(parent)
 
 
 
+QPointF GraphPin::getPoint()
+{
+    return QPointF(gX, gY);
+}
+
+
+
 void GraphPin::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)
 {
     painter->setPen(QPen(Qt::black, 1));

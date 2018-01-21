@@ -25,7 +25,7 @@ GraphElement::GraphElement(int input, int output, stylePtr _style, QGraphicsItem
         gPinPtr pin = std::make_unique<GraphPin>(this);
 
 		pin->number = i+1;
-        pin->value = 1;
+        pin->value = i % 2 == 0 ? 1 : 0;
 
         vInPins.push_back(std::move(pin));
     }
@@ -35,7 +35,7 @@ GraphElement::GraphElement(int input, int output, stylePtr _style, QGraphicsItem
         gPinPtr pin = std::make_unique<GraphPin>(this);
 
 		pin->number = i+1;
-        pin->value = 0;
+        pin->value = i % 2 == 0 ? 1 : 0;
 
         vOutPins.push_back(std::move(pin));
     }

@@ -9,6 +9,7 @@
 #include <QMenuBar>
 #include <QDir>
 #include <QAction>
+#include <QSharedPointer>
 
 #include "scheme.h"
 #include "styleselect.h"

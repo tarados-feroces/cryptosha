@@ -16,26 +16,32 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_Scheme
 {
 public:
+    QVBoxLayout *verticalLayout;
     QGraphicsView *graphicsView;
 
     void setupUi(QDialog *Scheme)
     {
         if (Scheme->objectName().isEmpty())
             Scheme->setObjectName(QStringLiteral("Scheme"));
-        Scheme->resize(967, 649);
+        Scheme->resize(1055, 750);
+        verticalLayout = new QVBoxLayout(Scheme);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         graphicsView = new QGraphicsView(Scheme);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
-        graphicsView->setGeometry(QRect(60, 41, 871, 591));
         graphicsView->setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
         graphicsView->setHorizontalScrollBarPolicy(Qt::ScrollBarAsNeeded);
         graphicsView->setSizeAdjustPolicy(QAbstractScrollArea::AdjustToContentsOnFirstShow);
         graphicsView->setRenderHints(QPainter::HighQualityAntialiasing|QPainter::TextAntialiasing);
+
+        verticalLayout->addWidget(graphicsView);
+
 
         retranslateUi(Scheme);
 

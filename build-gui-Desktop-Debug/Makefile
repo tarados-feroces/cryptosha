@@ -57,10 +57,12 @@ SOURCES       = ../gui/main/main.cpp \
 		../gui/elements/graphPin.cpp \
 		../gui/main/styleselect.cpp \
 		../gui/elements/pblockstyle.cpp \
-		../gui/settings.cpp moc_mainwindow.cpp \
+		../gui/settings.cpp \
+		../gui/main/styleerror.cpp moc_mainwindow.cpp \
 		moc_scheme.cpp \
 		moc_styleselect.cpp \
-		moc_graphElement.cpp
+		moc_graphElement.cpp \
+		moc_styleerror.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		scheme.o \
@@ -71,10 +73,12 @@ OBJECTS       = main.o \
 		styleselect.o \
 		pblockstyle.o \
 		settings.o \
+		styleerror.o \
 		moc_mainwindow.o \
 		moc_scheme.o \
 		moc_styleselect.o \
-		moc_graphElement.o
+		moc_graphElement.o \
+		moc_styleerror.o
 DIST          = ../gui/main/test.json \
 		../gui/styles/DefaultStyle.json \
 		../gui/styles/myStyle.json \
@@ -145,7 +149,8 @@ DIST          = ../gui/main/test.json \
 		../gui/elements/graphLayer.h \
 		../gui/elements/graphPin.h \
 		../gui/elements/pblockstyle.h \
-		../gui/settings.hpp ../gui/main/main.cpp \
+		../gui/settings.hpp \
+		../gui/main/styleerror.h ../gui/main/main.cpp \
 		../gui/main/mainwindow.cpp \
 		../gui/main/scheme.cpp \
 		../gui/elements/style.cpp \
@@ -154,7 +159,8 @@ DIST          = ../gui/main/test.json \
 		../gui/elements/graphPin.cpp \
 		../gui/main/styleselect.cpp \
 		../gui/elements/pblockstyle.cpp \
-		../gui/settings.cpp
+		../gui/settings.cpp \
+		../gui/main/styleerror.cpp
 QMAKE_TARGET  = gui
 DESTDIR       = #avoid trailing-slash linebreak
 TARGET        = gui
@@ -182,7 +188,7 @@ first: all
 
 ####### Build rules
 
-$(TARGET): ui_mainwindow.h ui_scheme.h ui_styleselect.h $(OBJECTS)  
+$(TARGET): ui_mainwindow.h ui_scheme.h ui_styleselect.h ui_styleerror.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../gui/gui.pro /usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64/qmake.conf /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -326,9 +332,9 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../gui/main/mainwindow.h ../gui/main/scheme.h ../gui/elements/style.h ../gui/main/styleselect.h ../gui/elements/graphElement.h ../gui/elements/graphLayer.h ../gui/elements/graphPin.h ../gui/elements/pblockstyle.h ../gui/settings.hpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../gui/main/main.cpp ../gui/main/mainwindow.cpp ../gui/main/scheme.cpp ../gui/elements/style.cpp ../gui/elements/graphElement.cpp ../gui/elements/graphLayer.cpp ../gui/elements/graphPin.cpp ../gui/main/styleselect.cpp ../gui/elements/pblockstyle.cpp ../gui/settings.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../gui/user_interface/mainwindow.ui ../gui/user_interface/scheme.ui ../gui/user_interface/styleselect.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../gui/main/mainwindow.h ../gui/main/scheme.h ../gui/elements/style.h ../gui/main/styleselect.h ../gui/elements/graphElement.h ../gui/elements/graphLayer.h ../gui/elements/graphPin.h ../gui/elements/pblockstyle.h ../gui/settings.hpp ../gui/main/styleerror.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../gui/main/main.cpp ../gui/main/mainwindow.cpp ../gui/main/scheme.cpp ../gui/elements/style.cpp ../gui/elements/graphElement.cpp ../gui/elements/graphLayer.cpp ../gui/elements/graphPin.cpp ../gui/main/styleselect.cpp ../gui/elements/pblockstyle.cpp ../gui/settings.cpp ../gui/main/styleerror.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../gui/user_interface/mainwindow.ui ../gui/user_interface/scheme.ui ../gui/user_interface/styleselect.ui ../gui/user_interface/styleerror.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -351,9 +357,9 @@ check: first
 
 compiler_rcc_make_all:
 compiler_rcc_clean:
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_scheme.cpp moc_styleselect.cpp moc_graphElement.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_scheme.cpp moc_styleselect.cpp moc_graphElement.cpp moc_styleerror.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_scheme.cpp moc_styleselect.cpp moc_graphElement.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_scheme.cpp moc_styleselect.cpp moc_graphElement.cpp moc_styleerror.cpp
 moc_mainwindow.cpp: ../gui/main/scheme.h \
 		../gui/elements/pblockstyle.h \
 		../gui/elements/style.h \
@@ -381,11 +387,14 @@ moc_graphElement.cpp: ../gui/elements/graphPin.h \
 		../gui/elements/graphElement.h
 	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/danchetto/projects/cryptosha/gui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../gui/elements/graphElement.h -o moc_graphElement.cpp
 
+moc_styleerror.cpp: ../gui/main/styleerror.h
+	/usr/lib/x86_64-linux-gnu/qt5/bin/moc $(DEFINES) -I/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64 -I/home/danchetto/projects/cryptosha/gui -I/usr/include/x86_64-linux-gnu/qt5 -I/usr/include/x86_64-linux-gnu/qt5/QtWidgets -I/usr/include/x86_64-linux-gnu/qt5/QtGui -I/usr/include/x86_64-linux-gnu/qt5/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../gui/main/styleerror.h -o moc_styleerror.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h ui_scheme.h ui_styleselect.h
+compiler_uic_make_all: ui_mainwindow.h ui_scheme.h ui_styleselect.h ui_styleerror.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h ui_scheme.h ui_styleselect.h
+	-$(DEL_FILE) ui_mainwindow.h ui_scheme.h ui_styleselect.h ui_styleerror.h
 ui_mainwindow.h: ../gui/user_interface/mainwindow.ui
 	/usr/lib/x86_64-linux-gnu/qt5/bin/uic ../gui/user_interface/mainwindow.ui -o ui_mainwindow.h
 
@@ -394,6 +403,9 @@ ui_scheme.h: ../gui/user_interface/scheme.ui
 
 ui_styleselect.h: ../gui/user_interface/styleselect.ui
 	/usr/lib/x86_64-linux-gnu/qt5/bin/uic ../gui/user_interface/styleselect.ui -o ui_styleselect.h
+
+ui_styleerror.h: ../gui/user_interface/styleerror.ui
+	/usr/lib/x86_64-linux-gnu/qt5/bin/uic ../gui/user_interface/styleerror.ui -o ui_styleerror.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -458,6 +470,7 @@ styleselect.o: ../gui/main/styleselect.cpp ../gui/main/styleselect.h \
 		../gui/elements/pblockstyle.h \
 		../gui/elements/style.h \
 		../gui/settings.hpp \
+		../gui/main/styleerror.h \
 		ui_styleselect.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o styleselect.o ../gui/main/styleselect.cpp
 
@@ -468,6 +481,10 @@ pblockstyle.o: ../gui/elements/pblockstyle.cpp ../gui/elements/pblockstyle.h \
 
 settings.o: ../gui/settings.cpp ../gui/settings.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o settings.o ../gui/settings.cpp
+
+styleerror.o: ../gui/main/styleerror.cpp ../gui/main/styleerror.h \
+		ui_styleerror.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o styleerror.o ../gui/main/styleerror.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
@@ -480,6 +497,9 @@ moc_styleselect.o: moc_styleselect.cpp
 
 moc_graphElement.o: moc_graphElement.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_graphElement.o moc_graphElement.cpp
+
+moc_styleerror.o: moc_styleerror.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_styleerror.o moc_styleerror.cpp
 
 ####### Install
 

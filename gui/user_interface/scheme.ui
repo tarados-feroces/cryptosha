@@ -6,35 +6,31 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>967</width>
-    <height>649</height>
+    <width>1055</width>
+    <height>750</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>New scheme</string>
   </property>
-  <widget class="QGraphicsView" name="graphicsView">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>41</y>
-     <width>871</width>
-     <height>591</height>
-    </rect>
-   </property>
-   <property name="verticalScrollBarPolicy">
-    <enum>Qt::ScrollBarAsNeeded</enum>
-   </property>
-   <property name="horizontalScrollBarPolicy">
-    <enum>Qt::ScrollBarAsNeeded</enum>
-   </property>
-   <property name="sizeAdjustPolicy">
-    <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
-   </property>
-   <property name="renderHints">
-    <set>QPainter::HighQualityAntialiasing|QPainter::TextAntialiasing</set>
-   </property>
-  </widget>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QGraphicsView" name="graphicsView">
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAsNeeded</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAsNeeded</enum>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
+     </property>
+     <property name="renderHints">
+      <set>QPainter::HighQualityAntialiasing|QPainter::TextAntialiasing</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

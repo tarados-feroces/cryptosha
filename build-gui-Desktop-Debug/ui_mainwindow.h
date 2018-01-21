@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
@@ -28,8 +29,9 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QPushButton *runButton;
+    QGridLayout *gridLayout;
     QTextEdit *textEdit;
+    QPushButton *runButton;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
@@ -42,13 +44,23 @@ public:
         MainWindow->setIconSize(QSize(24, 24));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        runButton = new QPushButton(centralWidget);
-        runButton->setObjectName(QStringLiteral("runButton"));
-        runButton->setGeometry(QRect(870, 530, 121, 51));
+        gridLayout = new QGridLayout(centralWidget);
+        gridLayout->setSpacing(6);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
         textEdit = new QTextEdit(centralWidget);
         textEdit->setObjectName(QStringLiteral("textEdit"));
-        textEdit->setGeometry(QRect(20, 29, 831, 551));
         textEdit->viewport()->setProperty("cursor", QVariant(QCursor(Qt::IBeamCursor)));
+
+        gridLayout->addWidget(textEdit, 0, 0, 2, 1);
+
+        runButton = new QPushButton(centralWidget);
+        runButton->setObjectName(QStringLiteral("runButton"));
+        runButton->setMaximumSize(QSize(16777215, 16777215));
+        runButton->setLayoutDirection(Qt::LeftToRight);
+
+        gridLayout->addWidget(runButton, 1, 2, 1, 1);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -69,8 +81,8 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "Cryptosha", 0));
-        runButton->setText(QApplication::translate("MainWindow", "Run", 0));
         textEdit->setPlaceholderText(QApplication::translate("MainWindow", "//code here//", 0));
+        runButton->setText(QApplication::translate("MainWindow", "Run", 0));
     } // retranslateUi
 
 };

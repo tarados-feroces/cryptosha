@@ -15,6 +15,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QDialogButtonBox>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QPushButton>
@@ -24,30 +25,47 @@ QT_BEGIN_NAMESPACE
 class Ui_StyleSelect
 {
 public:
-    QDialogButtonBox *buttonBox;
-    QPushButton *Add;
+    QGridLayout *gridLayout;
     QPushButton *Default;
+    QPushButton *Add;
+    QDialogButtonBox *buttonBox;
     QLabel *label;
 
     void setupUi(QDialog *StyleSelect)
     {
         if (StyleSelect->objectName().isEmpty())
             StyleSelect->setObjectName(QStringLiteral("StyleSelect"));
-        StyleSelect->resize(651, 300);
-        buttonBox = new QDialogButtonBox(StyleSelect);
-        buttonBox->setObjectName(QStringLiteral("buttonBox"));
-        buttonBox->setGeometry(QRect(30, 240, 341, 32));
-        buttonBox->setOrientation(Qt::Horizontal);
-        buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
-        Add = new QPushButton(StyleSelect);
-        Add->setObjectName(QStringLiteral("Add"));
-        Add->setGeometry(QRect(30, 90, 89, 25));
+        StyleSelect->resize(439, 166);
+        gridLayout = new QGridLayout(StyleSelect);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
         Default = new QPushButton(StyleSelect);
         Default->setObjectName(QStringLiteral("Default"));
-        Default->setGeometry(QRect(30, 130, 89, 25));
+
+        gridLayout->addWidget(Default, 1, 0, 1, 1);
+
+        Add = new QPushButton(StyleSelect);
+        Add->setObjectName(QStringLiteral("Add"));
+        QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(Add->sizePolicy().hasHeightForWidth());
+        Add->setSizePolicy(sizePolicy);
+
+        gridLayout->addWidget(Add, 0, 0, 1, 1);
+
+        buttonBox = new QDialogButtonBox(StyleSelect);
+        buttonBox->setObjectName(QStringLiteral("buttonBox"));
+        buttonBox->setOrientation(Qt::Horizontal);
+        buttonBox->setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Ok);
+
+        gridLayout->addWidget(buttonBox, 2, 0, 1, 2);
+
         label = new QLabel(StyleSelect);
         label->setObjectName(QStringLiteral("label"));
-        label->setGeometry(QRect(176, 99, 401, 71));
+        label->setWordWrap(true);
+
+        gridLayout->addWidget(label, 0, 1, 2, 1);
+
 
         retranslateUi(StyleSelect);
         QObject::connect(buttonBox, SIGNAL(accepted()), StyleSelect, SLOT(accept()));
@@ -58,9 +76,9 @@ public:
 
     void retranslateUi(QDialog *StyleSelect)
     {
-        StyleSelect->setWindowTitle(QApplication::translate("StyleSelect", "Dialog", 0));
-        Add->setText(QApplication::translate("StyleSelect", "Add", 0));
+        StyleSelect->setWindowTitle(QApplication::translate("StyleSelect", "Choose style", 0));
         Default->setText(QApplication::translate("StyleSelect", "Default", 0));
+        Add->setText(QApplication::translate("StyleSelect", "Choose", 0));
         label->setText(QString());
     } // retranslateUi
 

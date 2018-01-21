@@ -18,6 +18,7 @@ class Scheme : public QDialog
 
 public:
     Scheme(stylePtr _style, QWidget *parent = 0);
+    Scheme(const Scheme &) = delete;
     virtual ~Scheme();
 
 private:

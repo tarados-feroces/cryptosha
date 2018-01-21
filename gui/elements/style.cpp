@@ -1,18 +1,19 @@
 #include "style.h"
-//#include <QDir>
 
 
 
-Style::Style() : path(gui::defaultStylePath)//QDir::currentPath() + "/gui/styles/DefaultStyle.json")
+
+Style::Style() : path(gui::defaultStylePath), correct(true)
 {
     read();
 }
 
 
-Style::Style(QString _path) : path(_path)
+Style::Style(QString _path) : path(_path), correct(true)
 {
     read();
 }
+
 
 
 void Style::changePath(QString _path)
@@ -28,26 +29,48 @@ QString Style::getPath()
 }
 
 
+
+bool Style::isCorrect()
+{
+    return this->correct;
+}
+
+
 void Style::read()
 {
+    if (path.size() == 0)
+        return;
+
     QFile data(path);
+
     data.open(QIODevice::ReadOnly);
 
     QJsonDocument document = QJsonDocument::fromJson(data.readAll());
     QJsonObject root = document.object();
 
-    this->width = root["Width"].toInt();
-    this->height = root["Height"].toInt();
-    auto rgb = root["Color"].toArray();
-    QColor c(rgb[0].toInt(), rgb[1].toInt(), rgb[2].toInt());
-    this->color = c;
+    if (root.find("Width") != root.end() && root.find("Height") != root.end() && root.find("Color") != root.end())
+    {
+        this->width = root["Width"].toInt();
+        this->height = root["Height"].toInt();
+        auto rgb = root["Color"].toArray();
+        QColor c(rgb[0].toInt(), rgb[1].toInt(), rgb[2].toInt());
+        this->color = c;
+    }
+
+    else
+    {
+        this->correct = false;
+    }
     data.close();
 }
+
+
 
 int Style::getWidth()
 {
     return this->width;
 }
+
 
 
 int Style::getHeight()
@@ -61,6 +84,7 @@ QColor Style::getColor()
 {
     return this->color;
 }
+
 
 
 void Style::paint(QPainter *painter)

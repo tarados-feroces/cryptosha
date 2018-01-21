@@ -12,7 +12,7 @@ GraphElement::GraphElement(QGraphicsItem *parent)
 GraphElement::GraphElement(int input, int output, stylePtr _style, QGraphicsItem * parent)
     : QGraphicsItem(parent), style(_style)
 {
-	setFlag(QGraphicsItem::ItemIsSelectable);
+    setFlag(QGraphicsItem::ItemIsSelectable);
     InputPins = input;
     OutputPins = output;
 
@@ -36,7 +36,6 @@ GraphElement::GraphElement(int input, int output, stylePtr _style, QGraphicsItem
 
 		pin->number = i+1;
         pin->value = 0;
-
 
         vOutPins.push_back(std::move(pin));
     }
@@ -94,11 +93,13 @@ void GraphElement::mouseReleaseEvent(QGraphicsSceneMouseEvent *event)
 
 void GraphElement::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 {
+
+    emit coordChanged();
     this->gX = mapToScene(event->pos()).x();
     this->gY = mapToScene(event->pos()).y();
-    this->setPos(mapToScene(event->pos()));
+    this->setPos(gX, gY);
     setPinsCoords();
-    emit coordChanged();
+
 }
 
 
@@ -106,18 +107,18 @@ void GraphElement::mouseMoveEvent(QGraphicsSceneMouseEvent *event)
 void GraphElement::setPinsCoords()
 {
     int k = 0;
-    for (auto i = vInPins.begin(); i != vInPins.end(); ++i)
+    for (auto& i: vInPins)
     {
 		k += width / (InputPins + 1);
-        (*i)->gX = gX + k + 2;
-        (*i)->gY = gY + 2;
+        i->gX = gX + k + 2;
+        i->gY = gY + 2;
     }
     k = 0;
-    for (auto i = vOutPins.begin(); i != vOutPins.end(); ++i)
+    for (auto& i: vOutPins)
     {
 		k += width / (OutputPins + 1);
-        (*i)->gX = gX + k + 2;
-        (*i)->gY = gY + height + 2;
+        i->gX = gX + k + 2;
+        i->gY = gY + height + 2;
     }
 }
 

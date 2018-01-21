@@ -36,7 +36,8 @@ SOURCES += \
     elements/graphPin.cpp \
     main/styleselect.cpp \
     elements/pblockstyle.cpp \
-    settings.cpp
+    settings.cpp \
+    main/styleerror.cpp
 
 
 HEADERS += \
@@ -48,13 +49,15 @@ HEADERS += \
     elements/graphLayer.h \
     elements/graphPin.h \
     elements/pblockstyle.h \
-    settings.hpp
+    settings.hpp \
+    main/styleerror.h
 
 
 FORMS += \
         user_interface/mainwindow.ui \
     user_interface/scheme.ui \
-    user_interface/styleselect.ui
+    user_interface/styleselect.ui \
+    user_interface/styleerror.ui
 
 LIBS += -lqjson
 

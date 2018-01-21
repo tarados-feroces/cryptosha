@@ -20,35 +20,34 @@
    </size>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="runButton">
-    <property name="geometry">
-     <rect>
-      <x>870</x>
-      <y>530</y>
-      <width>121</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Run</string>
-    </property>
-   </widget>
-   <widget class="QTextEdit" name="textEdit">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>29</y>
-      <width>831</width>
-      <height>551</height>
-     </rect>
-    </property>
-    <property name="cursor" stdset="0">
-     <cursorShape>IBeamCursor</cursorShape>
-    </property>
-    <property name="placeholderText">
-     <string>//code here//</string>
-    </property>
-   </widget>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0" rowspan="2">
+     <widget class="QTextEdit" name="textEdit">
+      <property name="cursor" stdset="0">
+       <cursorShape>IBeamCursor</cursorShape>
+      </property>
+      <property name="placeholderText">
+       <string>//code here//</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="2">
+     <widget class="QPushButton" name="runButton">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="text">
+       <string>Run</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

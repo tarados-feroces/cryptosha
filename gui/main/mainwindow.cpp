@@ -164,9 +164,11 @@ void MainWindow::styleUpdate()
 void MainWindow::on_runButton_clicked()
 {
     showSaveMenu();
-    Scheme *dialog = new Scheme(style, this);
-    dialog->show();
+//    QSharedPointer<Scheme> dialog = QSharedPointer<Scheme>(new Scheme(style, this));
+    Scheme * dialog = new Scheme(style, this);
     dialog->setWindowTitle(this->filename);
+    dialog->show();
+
 }
 
 

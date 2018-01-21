@@ -31,12 +31,14 @@ public:
     int getHeight();
     QString getPath();
     QColor getColor();
+    bool isCorrect();
 
 private:
     int width;
     int height;
     QColor color;
     QString path;
+    bool correct;
 };
 
 #endif // STYLE_H

@@ -38,12 +38,12 @@ public:
 
     cry::lang::object_view object() {
         return _object;
-    }const
+    } const
 
 
     priority prior() {
         return _priority;
-    }const
+    } const
 
 
     bool operator==(string_t& rhs) {

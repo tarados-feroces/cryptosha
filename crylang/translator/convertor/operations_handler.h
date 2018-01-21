@@ -18,7 +18,7 @@ class operations_handler{
 
 public:
 
-    operations_handler();
+    operations_handler(std::vector<operation>&);
 
 
     bool handle_operation(expression_t &output, string_t input);

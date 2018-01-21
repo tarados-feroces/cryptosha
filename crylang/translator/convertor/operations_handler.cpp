@@ -1,7 +1,7 @@
 #include "operations_handler.h"
 
-operations_handler::operations_handler() {
-    ops = make_operations(syntax::lol);
+operations_handler::operations_handler(std::vector<operation>& vector) {
+    ops = make_operations(vector);
 }
 
 

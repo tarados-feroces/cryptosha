@@ -1,9 +1,10 @@
 #pragma once
 
-#include "objects.hpp"
+#include "../variables.hpp"
+
+#include "definitions.hpp"
 
 #include <functional>
-
 #include <typeinfo>
 #include <iostream>
 #include <type_traits>
@@ -34,9 +35,16 @@ namespace crylang {
             }
 
             template<class... Args>
-            arguments& add( Args...args )
+            arguments& push( Args...args )
             {
                 _args_vector.emplace_back( std::forward<Args>(args)... );
+                return *this;
+            }
+
+            variable_ptr& pop()
+            {
+                variable_ptr ptr = *std::end( _args_vector );
+                _args_vector.pop_back();
                 return *this;
             }
 
@@ -56,15 +64,31 @@ namespace crylang {
             vector_t _args_vector;
         };
 
+    }
+}
 
+
+namespace crylang {
+
+    namespace operations {
+
+        using function_t = std::function<variable_ptr(arguments)>;
 
         struct base_operation
         {
-            base_operation( size_t args_count )
+            template<class... Args>
+            base_operation( size_t args_count, Args&&... args )
                 : _args_count( args_count )
+                , _func( std::forward<Args>(args)... )
             {}
 
-            virtual variable_ptr operator()( arguments ) = 0;
+            virtual variable_ptr run( arguments args )
+            {
+                if( correct_args_count() )
+                    return _func( args );
+                else
+                    throw errors::arguments_error("Wrong number of parameters.")
+            }
 
             bool correct_args_count( const arguments& args ) const
             {
@@ -73,8 +97,25 @@ namespace crylang {
 
         protected:
             size_t _args_count;
+            function_t _func;
         };
 
+        // struct built_in_operation
+        //     : public base_operation
+        // {
+        //     template<class... Args>
+        //     built_in_operation( size_t args_count, Args&&... args )
+        //         : base_operation( args_count + 1, std::forward<Args>(args)... )
+        //     {}
+        //
+        //     virtual variable_ptr run( arguments args )
+        //     {
+        //         if( correct_args_count() )
+        //             return _func( args );
+        //         else
+        //             throw errors::arguments_error("Wrong number of parameters.")
+        //     }
+        // }
 
 
         struct binary_operation
@@ -88,6 +129,8 @@ namespace crylang {
         };
 
 
+
+        /*
         struct numerical_binary_operation
             : public binary_operation
         {
@@ -125,7 +168,7 @@ namespace crylang {
                 if(this->correct_args_count( args )) {
                     return this->run_operator( args[0], args[1], static_oper );
                 }
-                else throw errors::arguments_error( "Operator '+' : required 2 arguments." );
+                else throw errors::arguments_error( "Operator '@sum' : required 2 arguments." );
             }
 
             static constexpr auto static_oper = [](auto l, auto r)
@@ -133,6 +176,7 @@ namespace crylang {
                 return l + r;
             };
         };
+        */
 
 
 

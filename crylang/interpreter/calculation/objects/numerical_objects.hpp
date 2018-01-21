@@ -40,7 +40,6 @@ namespace crylang {
                 throw errors::type_error( "Type is not a number" );
             }
         }
-
     };
 
 }

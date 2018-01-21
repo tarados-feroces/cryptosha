@@ -13,6 +13,8 @@ namespace cry {
 	using    any_t = boost::any;
 	using   size_t = std::size_t;
 
+	using var_name_t = string_t;
+
     template<class... T>
     using variant = boost::variant<T...>;
 

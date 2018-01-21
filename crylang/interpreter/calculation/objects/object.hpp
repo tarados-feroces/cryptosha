@@ -1,14 +1,14 @@
 #pragma once
 
-#include "types.hpp"
-
+#include "object_map.hpp"
 
 namespace crylang {
 
     class object
     {
     public:
-        using types_var = type_variant;
+        using variants_t = type_variant;
+        using members_t = object_map;
 
         template<class... Args>
         object( type obj_type, Args&&... args )
@@ -21,6 +21,7 @@ namespace crylang {
 
         object& operator=( const object& obj ) = default;
         object& operator=( object&& obj ) = default;
+
 
         type get_type() const
         {
@@ -36,7 +37,12 @@ namespace crylang {
         const auto& get() const
         {
             constexpr size_t type_id = size_t(T);
-            return std::get<type_id>( _var );
+            try {
+                auto var = std::get<type_id>( _var );
+            }
+            catch( ... ) {
+                throw errors::type_error( "Type error" )
+            }
         }
 
         template<int N>
@@ -51,9 +57,15 @@ namespace crylang {
             return std::get<T>( _var );
         }
 
-    protected:
-        type      _type;
-        types_var _var;
-    };
+        members_t& members()
+        {
+            return _members;
+        }
 
+    protected:
+        type        _type;
+        variants_t  _var;
+        members_t   _members;
+
+    };
 }

@@ -17,6 +17,10 @@ namespace crylang {
         }
     };
 
+    namespace built_in {
+        struct function_handler;
+    }
+
     class object;
 
     class numerical_objects;
@@ -27,5 +31,6 @@ namespace crylang {
     class sequence;
 
     using variable_ptr = std::shared_ptr<object>;
+    using null_ptr = std::shared_ptr( nullptr );
     using std::make_shared;
 }

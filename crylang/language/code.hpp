@@ -15,7 +15,7 @@ namespace cry {
 			empty            ///< command-stub
 		};
 
-		class command_type
+		struct command_type
         {
 			size_t mark;
 			keywords keyword;

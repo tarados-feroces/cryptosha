@@ -32,7 +32,15 @@ TEST_CASE( "Testing objects" )
 
         auto result = summator( args );
         REQUIRE( result->get_type() == type::Float );
-        REQUIRE( abs( result->get<type::Float>() - 0.2 ) < 1e-10 );
+        REQUIRE( abs( result->get<type::Float>() - 0.2 ) < 1e-12 );
+
+        auto new_var = *int_var;
+        REQUIRE( new_var.get_type() == type::Int );
+
+        new_var.perform( "move", *float_var );
+
+        REQUIRE( new_var.get_type() == type::Float );
+        REQUIRE( abs( new_var.get<type::Float>() - 3.2 ) < 1e-12 );
 
     }
 

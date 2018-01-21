@@ -16,6 +16,8 @@ namespace syntax {
 
     static const cry::string_t divider = ",";
 
+    static const cry::string_t conv = "|";
+    
     static const cry::string_t assign_copy = "=";
     static const cry::string_t assign_move = "<-";
     static const cry::string_t swap = "<->";

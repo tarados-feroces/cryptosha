@@ -5,6 +5,7 @@
 namespace handler {
 
     static std::vector<operation> ops = {
+            {syntax::conv,        priority::v_v_v_low, cry::lang::operators::conv},
             {syntax::swap,        priority::v_v_v_low, cry::lang::operators::swap},
             {syntax::equal,       priority::v_v_low,   cry::lang::operators::equal},
             {syntax::not_equal,   priority::v_v_low,   cry::lang::operators::not_equal},

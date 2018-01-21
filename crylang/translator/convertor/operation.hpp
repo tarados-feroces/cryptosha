@@ -52,7 +52,7 @@ public:
 
 
     bool operator!=(string_t& rhs) {
-        return funcs::equal(name(), rhs);
+        return !funcs::equal(name(), rhs);
     }
 
 

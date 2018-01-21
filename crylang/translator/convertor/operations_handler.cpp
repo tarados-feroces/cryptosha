@@ -1,5 +1,23 @@
 #include "operations_handler.h"
 
+operations_handler::operations_handler() {
+
+    ops.add(operation(syntax::swap, priority::v_v_v_low, cry::lang::operators::swap)),
+    ops.add(operation(syntax::equal, priority::v_v_low, cry::lang::operators::equal)),
+    ops.add(operation(syntax::not_equal, priority::v_v_low, cry::lang::operators::not_equal)),
+    ops.add(operation(syntax::assign_copy, priority::v_v_v_low, cry::lang::operators::assign_copy)),  // операторы с большим кол-вом символов должны располагаться первыми
+    ops.add(operation(syntax::assign_move, priority::v_v_v_low, cry::lang::operators::assign_move)),
+    ops.add(operation(syntax::greater, priority::v_v_low, cry::lang::operators::greater)),
+    ops.add(operation(syntax::less, priority::v_v_low, cry::lang::operators::less)),
+    ops.add(operation(syntax::plus, priority::v_low, cry::lang::operators::plus)),
+    ops.add(operation(syntax::minus, priority::v_low, cry::lang::operators::minus)),
+    ops.add(operation(syntax::multi, priority::low, cry::lang::operators::mult)),
+    ops.add(operation(syntax::div, priority::low, cry::lang::operators::div)),
+    ops.add(operation(syntax::mod, priority::low, cry::lang::operators::mod)),
+    ops.add(operation(syntax::degree, priority::medium, cry::lang::operators::degree));
+}
+
+
 bool operations_handler::handle_operation(expression_t &output, string_t input) {
 
     if(handle_operator(output, input))

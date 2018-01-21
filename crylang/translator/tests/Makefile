@@ -2,8 +2,8 @@ compiler    := g++
 std_version := -std=c++14 -Wall
 
 
-convertor_tests: _convertor.o _string_funcs.o _operations.o _convertor_tests.o
-	$(compiler) $(std_version) _convertor.o _operations.o _string_funcs.o convertor_tests.o -o convertor.test.out
+convertor_tests: _convertor.o _string_funcs.o _operations_handler.o _convertor_tests.o
+	$(compiler) $(std_version) _convertor.o _operations_handler.o _string_funcs.o convertor_tests.o -o convertor.test.out
 	./convertor.test.out
 
 
@@ -28,8 +28,8 @@ _convertor.o:
 _string_funcs.o:
 		$(compiler) $(std_version) -c ../funcs/string_funcs.cpp -o _string_funcs.o
 
-_operations.o:
-		$(compiler) $(std_version) -c ../convertor/operations_handler.cpp -o _operations.o
+_operations_handler.o:
+		$(compiler) $(std_version) -c ../convertor/operations_handler.cpp -o _operations_handler.o
 
 
 

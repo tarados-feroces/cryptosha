@@ -1,10 +1,12 @@
 #pragma once
 
 #include "operation.hpp"
+#include <iterator>
+#include <unordered_set>
 
 
 
-struct operations{
+class operations{
 
 public:
 
@@ -16,7 +18,7 @@ public:
     }
 
 
-    void add(operation op) {
+    void add(const operation& op) {
         ops.push_back(op);
     }
 
@@ -30,6 +32,38 @@ public:
     }
 
 
+    auto find(string_t name) {
+        return funcs::find<operation, string_t>(ops, name);
+    }
+
+
+    auto end() {
+        return ops.end();
+    }
+
+
+private:
     std::vector<operation> ops;
 
 };
+
+
+template <class container>
+operations make_operations(container& cont) {
+
+    operations result;
+
+    std::unordered_set<string_t> set;
+
+    for(auto it = std::begin(cont); it != std::end(cont); ++it) {
+        set.insert(it->name());
+    }
+
+    if(set.size() != cont.size())
+        throw std::logic_error("Wrong operations");
+
+    for(auto it = std::begin(cont); it != std::end(cont); ++it)
+        result.add(*it);
+
+    return result;
+}

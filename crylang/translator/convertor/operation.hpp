@@ -33,17 +33,17 @@ public:
 
     string_t name() {
         return _name;
-    }
+    } const
 
 
     cry::lang::object_view object() {
         return _object;
-    }
+    }const
 
 
     priority prior() {
         return _priority;
-    }
+    }const
 
 
     bool operator==(string_t& rhs) {

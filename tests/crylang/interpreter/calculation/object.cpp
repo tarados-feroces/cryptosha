@@ -2,35 +2,7 @@
 
 #include "../../../main_test.hpp"
 
-#include <memory>
 
-
-class sum
-{
-public:
-
-    crylang::variable_ptr operator()(
-                                const crylang::variable_ptr& lhs_ptr,
-                                const crylang::variable_ptr& rhs_ptr)
-    {
-        using namespace crylang;
-
-
-
-        bool is_float_result = lhs_ptr->get_type() == type::Float ||
-                               rhs_ptr->get_type() == type::Float;
-
-
-        auto lhs = std::static_pointer_cast<numerical_object>(lhs_ptr);
-        auto rhs = std::static_pointer_cast<numerical_object>(rhs_ptr);
-
-        if( is_float_result ) {
-            return make_object( lhs->as_float() + rhs->as_float() );
-        }
-
-        return make_object( lhs->as_int() + rhs->as_int() );
-    }
-};
 
 TEST_CASE( "Testing objects" )
 {
@@ -55,15 +27,13 @@ TEST_CASE( "Testing objects" )
         auto float_var = make_object( 3.2 );
         REQUIRE( float_var->get_type() == type::Float );
 
-        auto summator = sum();
+        auto summator = operations::summator();
+        operations::arguments args = {short_var, float_var};
 
-        auto result = summator( int_var, short_var );
-        REQUIRE( result->get_type() == type::Int );
-        REQUIRE( result->get<type::Int>() == 39 );
-
-        result = summator( int_var, float_var );
+        auto result = summator( args );
         REQUIRE( result->get_type() == type::Float );
-        REQUIRE( result->get<type::Float>() == 45.2 );
+        REQUIRE( abs( result->get<type::Float>() - 0.2 ) < 1e-10 );
+
     }
 
     SECTION( "Strings" )

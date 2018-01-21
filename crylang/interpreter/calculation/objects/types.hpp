@@ -31,7 +31,7 @@ namespace crylang {
     using byte_t = std::byte;
     using char_t = char;
     using int_t = std::int64_t;
-    using vector_t = std::vector<object>;
+    using vector_t = std::vector<variable_ptr>;
 
     using float_t = double;
     using string_t = cry::string_t;

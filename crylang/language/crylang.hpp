@@ -1,14 +1,9 @@
 #pragma once
 #include "code.hpp"
-#include <map>
-
 
 
 namespace cry {
     namespace lang {
-
-
-
         namespace operators {
 
             #define def_operation(x) \

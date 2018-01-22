@@ -25,6 +25,19 @@ namespace crylang {
                 }
             );
 
+            st.insert(
+                minus.name(),
+                []( auto vars )
+                {
+                    variable_ptr lhs = vars["lhs"];
+                    variable_ptr rhs = vars["rhs"];
+
+                    return make_object(
+                        lhs->get<type::Int>() - rhs->get<type::Int>()
+                    );
+                }
+            );
+
             return st;
         }
 

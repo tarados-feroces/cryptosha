@@ -11,7 +11,7 @@ namespace cryptosha {
 	struct interpreter_handler
 	{
 		object_map objects;
-		code_type current_code;
+		code_type  current_code;
 		size_t     curent_mark;
 
 		interpreter_handler( code_t&& code )

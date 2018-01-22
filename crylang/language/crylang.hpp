@@ -2,7 +2,6 @@
 
 
 namespace cry {
-
     namespace lang {
         namespace operators {
 

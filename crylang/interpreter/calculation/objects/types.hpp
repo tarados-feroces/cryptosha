@@ -13,6 +13,8 @@ namespace crylang {
     enum class type {
         Nothing = 0,
 
+        Bool,
+
         Byte,   //std::byte
         Char,   //char
         Int,    //std::int64_t
@@ -31,6 +33,7 @@ namespace crylang {
     using byte_t = std::byte;
     using char_t = char;
     using int_t = std::int64_t;
+    using bool_t = bool;
     using vector_t = std::vector<variable_ptr>;
 
     using float_t = double;
@@ -39,6 +42,8 @@ namespace crylang {
     using type_variant =
         std::variant<
             none_t,
+
+            bool_t,
 
             byte_t,
             char_t,

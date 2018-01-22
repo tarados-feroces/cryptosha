@@ -34,6 +34,37 @@ TEST_CASE( "Testing objects" )
         REQUIRE( result->get_type() == type::Int );
         REQUIRE( result->get<type::Int>() == 39);
 
+        f = short_var->function("@minus");
+
+        result = f(map);
+
+        REQUIRE( result->get_type() == type::Int );
+        REQUIRE( result->get<type::Int>() == 45);
+
+        f = short_var->function("@equal");
+
+        result = f(map);
+
+        REQUIRE( result->get_type() == type::Bool );
+        REQUIRE( result->get<type::Bool>() == false);
+
+        f = short_var->function("@assign_copy");
+
+        result = f(map);
+
+        REQUIRE( result->get_type() == type::Int );
+        REQUIRE( result->get<type::Int>() == -3);
+
+        f = short_var->function("@assign_move");
+
+        result = f(map);
+
+        REQUIRE( result->get_type() == type::Int );
+        REQUIRE( result->get<type::Int>() == -3);
+
+
+
+
     }
 
     // SECTION( "Strings" )

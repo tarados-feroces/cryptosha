@@ -19,6 +19,8 @@ namespace crylang {
                                std::is_same<T, int>::value ||
                                std::is_same<T, short>::value;
 
+        bool constexpr is_bool = std::is_same<T, bool>::value;
+
         // bool constexpr is_float = std::is_same<T, float_t>::value ||
         //                           std::is_same<T, float>::value ||
         //                           std::is_same<T, double>::value;
@@ -36,6 +38,10 @@ namespace crylang {
         if constexpr( is_int ) {
             auto func_ptr = function_tables::generator::get_table( type::Int );
             return make_shared<object>( type::Int, func_ptr, int_t(variable) );
+        }
+
+        if constexpr( is_bool ) {
+            return make_shared<object>( type::Bool, nullptr, bool_t(variable) );
         }
         /*
         if constexpr( is_float )

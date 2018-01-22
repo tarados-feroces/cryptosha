@@ -12,12 +12,12 @@ namespace cry {
                 def_operation(plus);
                 def_operation(minus);
                 def_operation(mult);
-                def_operation(div);
+                def_operation(divis);
                 def_operation(mod);
                 def_operation(degree);
 
                 def_operation(class_member);
-                def_operation(ref);
+                //def_operation(ref);
 
                 def_operation(assign_copy);
                 def_operation(assign_move);
@@ -31,7 +31,6 @@ namespace cry {
                 def_operation(conv);
 
                 def_operation(empty);
-
 
             #undef def_operation
 

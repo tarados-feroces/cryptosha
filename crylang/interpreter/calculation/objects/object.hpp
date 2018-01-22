@@ -27,6 +27,7 @@ namespace crylang {
         object& operator=( const object& obj ) = default;
         object& operator=( object&& obj ) = default;
 
+        
 
         bool connect_table( func_table_ptr_t table_ptr )
         {
